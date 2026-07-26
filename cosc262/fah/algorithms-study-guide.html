@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algorithms Study Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Fraunces:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg: #f8f6f1;
+    --surface: #ffffff;
+    --surface2: #f2f0ea;
+    --border: #e0ddd4;
+    --text: #1a1916;
+    --muted: #6b6860;
+    --accent: #1a5c3a;
+    --accent2: #c2410c;
+    --accent3: #1d4ed8;
+    --accent-bg: #ecfdf5;
+    --accent2-bg: #fff7ed;
+    --accent3-bg: #eff6ff;
+    --tag-bg: #1a5c3a;
+    --code-bg: #1e1e2e;
+    --code-text: #cdd6f4;
+    --yellow: #fef3c7;
+    --yellow-border: #d97706;
+    --pink: #fdf2f8;
+    --pink-border: #9d174d;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  header {
+    background: var(--text);
+    color: white;
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+  }
+  header h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.4rem;
+  }
+  header p { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.85rem 1rem;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.15s;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+  nav a:hover { color: var(--text); }
+  nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  section { display: none; }
+  section.active { display: block; }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+  h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 1.8rem 0 0.8rem;
+    color: var(--text);
+  }
+  h4 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin: 1.2rem 0 0.5rem;
+  }
+  p { margin-bottom: 0.9rem; color: #2d2b27; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.3rem 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .card-title {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tip {
+    background: var(--yellow);
+    border-left: 3px solid var(--yellow-border);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  .tip strong { color: var(--yellow-border); }
+
+  .key-insight {
+    background: var(--accent-bg);
+    border: 1px solid #a7f3d0;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  .key-insight strong { color: var(--accent); }
+
+  .warning {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  .warning strong { color: #dc2626; }
+
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .code-block {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border-radius: 8px;
+    padding: 1.2rem 1.3rem;
+    font-size: 0.82rem;
+    line-height: 1.65;
+    overflow-x: auto;
+    margin: 0.8rem 0 1.2rem;
+  }
+  .code-block .kw { color: #cba6f7; }
+  .code-block .fn { color: #89b4fa; }
+  .code-block .cm { color: #6c7086; font-style: italic; }
+  .code-block .num { color: #fab387; }
+  .code-block .str { color: #a6e3a1; }
+  .code-block .op { color: #89dceb; }
+
+  .inline-code {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.1em 0.4em;
+    font-size: 0.85em;
+    color: var(--accent2);
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin: 1rem 0 1.5rem;
+  }
+  th {
+    background: var(--text);
+    color: white;
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  td {
+    padding: 0.55rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:hover td { background: var(--surface2); }
+  tr:last-child td { border-bottom: none; }
+
+  .badge {
+    display: inline-block;
+    padding: 0.15em 0.55em;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .badge-green { background: #dcfce7; color: #15803d; }
+  .badge-orange { background: #fed7aa; color: #c2410c; }
+  .badge-blue { background: #dbeafe; color: #1d4ed8; }
+  .badge-red { background: #fee2e2; color: #dc2626; }
+
+  .algo-diff {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1rem 0 1.5rem;
+  }
+  .algo-diff-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .algo-diff-header > div {
+    padding: 0.7rem 1.1rem;
+    font-weight: 600;
+    font-size: 0.88rem;
+  }
+  .algo-diff-header > div:first-child { background: var(--accent-bg); color: var(--accent); }
+  .algo-diff-header > div:last-child { background: var(--accent2-bg); color: var(--accent2); border-left: 1px solid var(--border); }
+  .algo-diff-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .algo-diff-body > div {
+    padding: 0.9rem 1.1rem;
+    font-size: 0.88rem;
+  }
+  .algo-diff-body > div:last-child { border-left: 1px solid var(--border); }
+
+  ul { padding-left: 1.3rem; }
+  li { margin-bottom: 0.35rem; }
+
+  .step {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--text);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content { flex: 1; }
+
+  /* Complexity table colors */
+  .c-good { color: #15803d; font-weight: 600; }
+  .c-ok { color: #d97706; font-weight: 600; }
+  .c-bad { color: #dc2626; font-weight: 600; }
+
+  .trace-table {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
+  }
+  .trace-table th { background: #2d2b27; letter-spacing: 0; text-transform: none; }
+  .trace-table td { border-bottom: 1px solid var(--border); padding: 0.4rem 0.7rem; }
+  .trace-table tr.highlight td { background: #fefce8; }
+
+  .quiz-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .quiz-q { font-weight: 600; margin-bottom: 0.7rem; }
+  .quiz-options label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  .quiz-reveal {
+    display: none;
+    margin-top: 0.8rem;
+    padding: 0.8rem;
+    background: var(--accent-bg);
+    border-radius: 6px;
+    font-size: 0.88rem;
+  }
+  .quiz-btn {
+    background: var(--text);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 0.7rem;
+    font-family: 'DM Sans', sans-serif;
+    transition: opacity 0.15s;
+  }
+  .quiz-btn:hover { opacity: 0.85; }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 2rem 0;
+  }
+
+  .formula-box {
+    background: #f8f5ff;
+    border: 1px solid #e9d5ff;
+    border-radius: 8px;
+    padding: 1rem 1.3rem;
+    margin: 0.8rem 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    text-align: center;
+    color: #6d28d9;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Algorithms Study Guide</h1>
+  <p>COSC262 &nbsp;·&nbsp; Graphs, Weighted Algorithms, Backtracking &nbsp;·&nbsp; Full Coverage</p>
+</header>
+
+<nav>
+  <a href="#" class="active" onclick="showSection('overview', this)">Overview</a>
+  <a href="#" onclick="showSection('graphs', this)">Graphs</a>
+  <a href="#" onclick="showSection('traversal', this)">BFS &amp; DFS</a>
+  <a href="#" onclick="showSection('weighted', this)">Prim &amp; Dijkstra</a>
+  <a href="#" onclick="showSection('backtracking', this)">Backtracking</a>
+  <a href="#" onclick="showSection('complexity', this)">Complexity</a>
+  <a href="#" onclick="showSection('quiz', this)">Practice Quiz</a>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- OVERVIEW -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="overview" class="active">
+  <h2>What you need to master</h2>
+  <p>The test is computer-based with multiple-choice and programming questions (roughly half each). You need to be able to <em>explain</em>, <em>trace</em>, <em>code</em>, and <em>analyse complexity</em> for every algorithm. Use this guide to understand deeply, not just memorise.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">📐 Topic 1 · Graph Fundamentals</div>
+      <ul>
+        <li>Definitions: directed, undirected, weighted</li>
+        <li>String format (U/D, W)</li>
+        <li>Adjacency matrix vs adjacency list</li>
+        <li>Components, trees, forests</li>
+        <li>Paths, cycles, DAGs</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">🔍 Topic 2 · BFS &amp; DFS</div>
+      <ul>
+        <li>Algorithm pseudocode &amp; code</li>
+        <li>State transitions (U → D → P)</li>
+        <li>Parent/predecessor tree</li>
+        <li>Applications: shortest path, components, topological sort, cycle detection, strong connectivity</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">⚖️ Topic 3 · Weighted Algorithms</div>
+      <ul>
+        <li>Minimum spanning tree (Prim's)</li>
+        <li>Shortest path tree (Dijkstra's)</li>
+        <li>Trace both step-by-step</li>
+        <li>Key differences between them</li>
+        <li>Complexity: O(n²) basic, O(m + n log n) with heap</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">🌲 Topic 4 · Backtracking</div>
+      <ul>
+        <li>DFS on implicit tree of candidates</li>
+        <li>Is-Solution, Children, Add-to-Output</li>
+        <li>Pruning with Should-Prune</li>
+        <li>Classic problems: binary numbers, permutations, Sudoku, N-queens</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Test tip:</strong> Programming questions let you resubmit with a penalty. Write clean pseudocode-like Python. Keep it short — if your solution is much longer than the pseudocode, something is wrong.
+  </div>
+
+  <h3>Algorithm Understanding Checklist</h3>
+  <p>For each algorithm, can you do all seven of these?</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem">
+    <div class="card" style="padding:0.7rem 1rem;font-size:0.88rem">☐ Explain the main idea on paper</div>
+    <div class="card" style="padding:0.7rem 1rem;font-size:0.88rem">☐ Identify problems it solves</div>
+    <div class="card" style="padding:0.7rem 1rem;font-size:0.88rem">☐ Write the pseudocode</div>
+    <div class="card" style="padding:0.7rem 1rem;font-size:0.88rem">☐ Analyse its complexity</div>
+    <div class="card" style="padding:0.7rem 1rem;font-size:0.88rem">☐ Compare to similar algorithms</div>
+    <div class="card" style="padding:0.7rem 1rem;font-size:0.88rem">☐ Trace a concrete example</div>
+    <div class="card" style="padding:0.7rem 1rem;font-size:0.88rem">☐ Implement it in Python</div>
+    <div class="card" style="padding:0.7rem 1rem;font-size:0.88rem">☐ Handle edge cases correctly</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- GRAPHS -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="graphs">
+  <h2>Graph Fundamentals</h2>
+
+  <h3>Core Definitions</h3>
+  <p>A graph is an ordered pair <strong>G = (V, E)</strong> where V is the set of vertices and E is the set of edges. We use <strong>n = |V|</strong> (number of vertices) and <strong>m = |E|</strong> (number of edges). The fundamental bound is <span class="inline-code">m ≤ n²</span>.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Undirected graph</div>
+      Edges are unordered pairs <code class="inline-code">{u, v}</code>. Going from u to v also allows v to u. Symmetric relationship.
+    </div>
+    <div class="card">
+      <div class="card-title">Directed graph</div>
+      Edges are ordered pairs <code class="inline-code">(u, v)</code>. Edge from u to v does <em>not</em> imply v to u. One-way.
+    </div>
+    <div class="card">
+      <div class="card-title">Weighted graph</div>
+      A triple <code class="inline-code">(V, E, W)</code> where W: E → ℝ assigns a real number (weight) to each edge.
+    </div>
+    <div class="card">
+      <div class="card-title">Sparse vs dense</div>
+      Sparse: <code class="inline-code">m ∈ O(n)</code>. Dense: <code class="inline-code">m ∈ Θ(n²)</code>. Most real-world graphs are sparse.
+    </div>
+  </div>
+
+  <h3>Graph String Format</h3>
+  <p>This format is used in all quizzes and the test. Memorise it.</p>
+
+  <div class="code-block"><span class="cm"># Header: [D|U] n [W]</span>
+<span class="cm"># D = directed, U = undirected, n = number of vertices</span>
+<span class="cm"># W = weighted (optional third field)</span>
+<span class="cm"># Each remaining line: u v [weight]</span>
+
+<span class="str">U 4          </span><span class="cm"># undirected, 4 vertices (0..3), unweighted</span>
+<span class="num">0 1</span>
+<span class="num">3 1</span>
+<span class="num">0 3</span>
+
+<span class="str">D 2 W        </span><span class="cm"># directed, 2 vertices, weighted</span>
+<span class="num">0 1 -5</span>
+<span class="num">1 0 8</span></div>
+
+  <div class="key-insight">
+    <strong>Key:</strong> In an undirected graph, each edge appears <em>once</em> in the text (e.g., either "0 1" or "1 0", not both). But in the adjacency list, it appears in <em>both</em> Adj[0] and Adj[1].
+  </div>
+
+  <h3>Data Structures: Adjacency Matrix vs List</h3>
+
+  <table>
+    <tr>
+      <th>Operation</th>
+      <th>Adjacency Matrix</th>
+      <th>Adjacency List</th>
+    </tr>
+    <tr>
+      <td>Check edge (i,j) exists</td>
+      <td class="c-good">Θ(1)</td>
+      <td class="c-ok">O(n)</td>
+    </tr>
+    <tr>
+      <td>Add / delete an edge</td>
+      <td class="c-good">Θ(1)</td>
+      <td class="c-ok">O(n)</td>
+    </tr>
+    <tr>
+      <td>Iterate edges from vertex</td>
+      <td class="c-bad">Θ(n)</td>
+      <td class="c-good">O(degree)</td>
+    </tr>
+    <tr>
+      <td>Iterate ALL edges</td>
+      <td class="c-bad">Θ(n²)</td>
+      <td class="c-good">Θ(n + m)</td>
+    </tr>
+    <tr>
+      <td>Space</td>
+      <td class="c-bad">Θ(n²)</td>
+      <td class="c-good">Θ(n + m)</td>
+    </tr>
+  </table>
+
+  <div class="tip">
+    <strong>Why adjacency lists win:</strong> Graph traversal iterates over all edges. For sparse graphs (most real-world cases), m ≪ n², so Θ(n+m) is much better than Θ(n²). Adjacency lists are the default for BFS/DFS/Prim/Dijkstra.
+  </div>
+
+  <h3>Adjacency List in Python</h3>
+  <div class="code-block"><span class="cm"># Weighted undirected example: "U 4 W / 3 1 -4 / 1 0 7"</span>
+adj = [
+    [(<span class="num">1</span>, <span class="num">7</span>)],           <span class="cm"># vertex 0: edge to 1 with weight 7</span>
+    [(<span class="num">3</span>, <span class="num">-4</span>), (<span class="num">0</span>, <span class="num">7</span>)],  <span class="cm"># vertex 1: edges to 3 (w=-4) and 0 (w=7)</span>
+    [],                  <span class="cm"># vertex 2: no edges</span>
+    [(<span class="num">1</span>, <span class="num">-4</span>)]           <span class="cm"># vertex 3: edge to 1 with weight -4</span>
+]
+<span class="cm"># For unweighted: use (neighbour, None) — e.g., [(1, None), (3, None)]</span></div>
+
+  <h3>Key Structural Concepts</h3>
+
+  <div class="card">
+    <div class="card-title">Path</div>
+    A sequence of vertices (v₀, v₁, …, vₖ) where each consecutive pair is an edge, and no edge is used more than once. Length = number of edges = k.
+  </div>
+  <div class="card">
+    <div class="card-title">Cycle</div>
+    A path of length ≥ 1 where source = destination. A graph with at least one cycle is <em>cyclic</em>; without cycles = <em>acyclic</em>. A directed acyclic graph is a <strong>DAG</strong>.
+  </div>
+  <div class="card">
+    <div class="card-title">Component</div>
+    A maximal connected subgraph of an undirected graph. Every vertex has a path to every other vertex in the same component.
+  </div>
+  <div class="card">
+    <div class="card-title">Tree / Forest</div>
+    A tree = rooted graph where every vertex has exactly one path to the root. A forest = graph where every component is a tree. Represented by a <code>parent</code> array.
+  </div>
+
+  <h3>Strongly Connected Graphs (Directed)</h3>
+  <p>A directed graph is <strong>strongly connected</strong> if there is a path between every ordered pair of vertices.</p>
+
+  <p><strong>Efficient test</strong> using the hub algorithm:</p>
+  <div class="step"><div class="step-num">1</div><div class="step-content">Run BFS/DFS from an arbitrary vertex h on G. If any vertex is undiscovered → <em>not</em> strongly connected.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-content">Construct G<sup>T</sup> (transpose: reverse all edges).</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-content">Run BFS/DFS from h on G<sup>T</sup>. If any vertex is undiscovered → <em>not</em> strongly connected. Otherwise → <em>is</em> strongly connected.</div></div>
+  <div class="key-insight">
+    <strong>Why it works:</strong> If h can reach everywhere in G AND everywhere can reach h (shown by h reaching everywhere in G<sup>T</sup>), then every vertex can reach every other vertex through h.
+    <strong>Complexity: O(n + m)</strong>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- TRAVERSAL -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="traversal">
+  <h2>BFS &amp; DFS</h2>
+
+  <h3>Three Vertex States</h3>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><span class="badge badge-orange">U</span> Undiscovered</div>
+      Not yet encountered. Initial state of all vertices.
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="badge badge-blue">D</span> Discovered</div>
+      Encountered but not fully processed yet. Being actively explored.
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="badge badge-green">P</span> Processed</div>
+      Fully explored. All neighbours have been considered.
+    </div>
+    <div class="card">
+      <div class="card-title">Transitions</div>
+      U → D when first encountered. D → P when all neighbours explored.
+    </div>
+  </div>
+
+  <h3>BFS — Breadth-First Search</h3>
+  <p>Uses a <strong>queue (FIFO)</strong>. Discovers vertices in order of increasing distance from the start.</p>
+
+  <div class="code-block"><span class="kw">def</span> <span class="fn">bfs_tree</span>(adj, s):
+    n = <span class="fn">len</span>(adj)
+    state = [<span class="str">'U'</span>] * n
+    parent = [<span class="kw">None</span>] * n
+    Q = <span class="fn">deque</span>()
+    state[s] = <span class="str">'D'</span>
+    Q.<span class="fn">append</span>(s)
+    <span class="kw">while</span> Q:
+        u = Q.<span class="fn">popleft</span>()           <span class="cm"># dequeue from front</span>
+        <span class="kw">for</span> v, _ <span class="kw">in</span> adj[u]:
+            <span class="kw">if</span> state[v] == <span class="str">'U'</span>:
+                state[v] = <span class="str">'D'</span>
+                parent[v] = u
+                Q.<span class="fn">append</span>(v)
+        state[u] = <span class="str">'P'</span>
+    <span class="kw">return</span> parent</div>
+
+  <h3>DFS — Depth-First Search</h3>
+  <p>Uses a <strong>call stack (LIFO)</strong> via recursion. Explores as deep as possible before backtracking.</p>
+
+  <div class="code-block"><span class="kw">def</span> <span class="fn">dfs_tree</span>(adj, s):
+    n = <span class="fn">len</span>(adj)
+    state = [<span class="str">'U'</span>] * n
+    parent = [<span class="kw">None</span>] * n
+    state[s] = <span class="str">'D'</span>
+    <span class="fn">dfs_loop</span>(adj, s, state, parent)
+    <span class="kw">return</span> parent
+
+<span class="kw">def</span> <span class="fn">dfs_loop</span>(adj, u, state, parent):
+    <span class="kw">for</span> v, _ <span class="kw">in</span> adj[u]:
+        <span class="kw">if</span> state[v] == <span class="str">'U'</span>:
+            state[v] = <span class="str">'D'</span>
+            parent[v] = u
+            <span class="fn">dfs_loop</span>(adj, v, state, parent)  <span class="cm"># recurse deep first</span>
+    state[u] = <span class="str">'P'</span>                         <span class="cm"># processed only after all descendants</span></div>
+
+  <div class="key-insight">
+    <strong>DFS vs BFS key difference:</strong> In BFS, use a queue and <code>popleft()</code>. In DFS, use recursion (implicit call stack). You can also implement DFS iteratively by replacing the queue with a stack and using <code>pop()</code> instead of <code>popleft()</code>.
+  </div>
+
+  <h4>Complexity (both BFS and DFS)</h4>
+  <div class="formula-box">Time: O(n + m) = O(max(n, m))</div>
+  <p style="font-size:0.88rem">Initialisation is Θ(n). Each vertex is discovered at most once. Each edge is examined at most once (O(m) total over all vertices). Therefore O(n + m).</p>
+
+  <h3>BFS Application: Shortest Path (unweighted)</h3>
+  <p>Since BFS visits vertices in order of distance from the source, the path in the predecessor tree from root s to any vertex t is the <em>shortest path</em> (fewest edges) in the graph.</p>
+
+  <div class="code-block"><span class="kw">def</span> <span class="fn">tree_path</span>(parent, s, t):
+    <span class="kw">if</span> s == t:
+        <span class="kw">return</span> [s]
+    <span class="kw">else</span>:
+        <span class="kw">return</span> <span class="fn">tree_path</span>(parent, s, parent[t]) + [t]</div>
+
+  <h3>Connected Components</h3>
+  <p>Repeatedly run BFS/DFS from any undiscovered vertex until all vertices are processed. Each BFS/DFS call discovers one component.</p>
+
+  <h3>DFS Application: Topological Sort (DAGs only)</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-content">Run modified DFS over all vertices. As each vertex is marked Processed, append it to <code>finish_order</code>.</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-content">Return <code>reverse(finish_order)</code> as the topological ordering.</div></div>
+
+  <div class="key-insight">
+    <strong>Why it works:</strong> If edge (u, v) exists, then v must finish (be Processed) before u. So v appears before u in finish_order, and u appears before v after reversing — exactly what topological sort requires.
+  </div>
+
+  <h3>DFS Application: Cycle Detection</h3>
+  <div class="card">
+    <div class="card-title">Directed graph</div>
+    During DFS, if examining edge (u, v) and v is already <strong>Discovered</strong> (still on the call stack), then there's a cycle — we've found a path from v back to itself.
+  </div>
+  <div class="card">
+    <div class="card-title">Undirected graph</div>
+    Same idea, but ignore the edge (u, v) where v = parent[u] — that's just the tree edge going backwards, not a cycle (a cycle must have length ≥ 1 and not reuse edges).
+  </div>
+
+  <h3>Comparing BFS and DFS</h3>
+  <div class="algo-diff">
+    <div class="algo-diff-header">
+      <div>BFS (Breadth-First)</div>
+      <div>DFS (Depth-First)</div>
+    </div>
+    <div class="algo-diff-body">
+      <div>
+        <ul>
+          <li>Uses a <strong>queue</strong> (FIFO)</li>
+          <li>Discovers by increasing distance</li>
+          <li>Good for <strong>shortest paths</strong> (unweighted)</li>
+          <li>Good for <strong>connected components</strong></li>
+          <li>Iterative implementation natural</li>
+          <li>Parent array = BFS tree (shortest paths from s)</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li>Uses <strong>call stack</strong> (recursion/LIFO)</li>
+          <li>Goes deep first, then backtracks</li>
+          <li>Good for <strong>topological sort</strong></li>
+          <li>Good for <strong>cycle detection</strong></li>
+          <li>Good for <strong>strong connectivity</strong></li>
+          <li>Vertex stays Discovered until ALL descendants processed</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- WEIGHTED -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="weighted">
+  <h2>Prim's Algorithm &amp; Dijkstra's Algorithm</h2>
+
+  <div class="key-insight">
+    <strong>These two algorithms are almost identical in structure.</strong> The only difference is what "distance" means and how it's updated. Understanding this connection is key to understanding both.
+  </div>
+
+  <h3>Prim's Algorithm — Minimum Spanning Tree</h3>
+  <p>Finds a spanning tree with the <em>minimum total edge weight</em>. Grows a tree by always adding the cheapest edge from the tree to a non-tree vertex.</p>
+
+  <div class="code-block"><span class="kw">def</span> <span class="fn">prim</span>(adj, s):
+    n = <span class="fn">len</span>(adj)
+    in_tree = [<span class="kw">False</span>] * n
+    distance = [<span class="fn">float</span>(<span class="str">'inf'</span>)] * n
+    parent = [<span class="kw">None</span>] * n
+    distance[s] = <span class="num">0</span>
+    <span class="kw">while not</span> <span class="fn">all</span>(in_tree):
+        u = <span class="fn">next_vertex</span>(in_tree, distance)
+        in_tree[u] = <span class="kw">True</span>
+        <span class="kw">for</span> v, weight <span class="kw">in</span> adj[u]:
+            <span class="kw">if not</span> in_tree[v] <span class="kw">and</span> weight < distance[v]:  <span class="cm"># ← KEY LINE</span>
+                distance[v] = weight                       <span class="cm"># just the edge weight</span>
+                parent[v] = u
+    <span class="kw">return</span> parent, distance
+
+<span class="kw">def</span> <span class="fn">next_vertex</span>(in_tree, distance):
+    <span class="cm"># Return the closest non-tree vertex</span>
+    min_dist = <span class="fn">float</span>(<span class="str">'inf'</span>)
+    u = -<span class="num">1</span>
+    <span class="kw">for</span> i, <span class="kw">in</span> <span class="fn">enumerate</span>(in_tree):
+        <span class="kw">if not</span> in_tree[i] <span class="kw">and</span> distance[i] < min_dist:
+            min_dist = distance[i]
+            u = i
+    <span class="kw">return</span> u</div>
+
+  <h3>Dijkstra's Algorithm — Shortest Path Tree</h3>
+  <p>Finds the shortest <em>path distance</em> (sum of weights) from source s to every other vertex. The only change from Prim's is how distance is updated.</p>
+
+  <div class="code-block"><span class="kw">def</span> <span class="fn">dijkstra</span>(adj, s):
+    n = <span class="fn">len</span>(adj)
+    in_tree = [<span class="kw">False</span>] * n
+    distance = [<span class="fn">float</span>(<span class="str">'inf'</span>)] * n
+    parent = [<span class="kw">None</span>] * n
+    distance[s] = <span class="num">0</span>
+    <span class="kw">while not</span> <span class="fn">all</span>(in_tree):
+        u = <span class="fn">next_vertex</span>(in_tree, distance)
+        in_tree[u] = <span class="kw">True</span>
+        <span class="kw">for</span> v, weight <span class="kw">in</span> adj[u]:
+            <span class="kw">if not</span> in_tree[v] <span class="kw">and</span> distance[u] + weight < distance[v]:  <span class="cm"># ← KEY LINE</span>
+                distance[v] = distance[u] + weight   <span class="cm"># path distance from source</span>
+                parent[v] = u
+    <span class="kw">return</span> parent, distance</div>
+
+  <div class="algo-diff">
+    <div class="algo-diff-header">
+      <div>Prim's (MST)</div>
+      <div>Dijkstra's (Shortest Path)</div>
+    </div>
+    <div class="algo-diff-body">
+      <div>
+        <strong>Goal:</strong> Minimum total tree weight<br><br>
+        <strong>distance[v]</strong> = cheapest <em>edge weight</em> from tree to v<br><br>
+        <strong>Update condition:</strong><br>
+        <code class="inline-code">weight &lt; distance[v]</code><br><br>
+        <strong>Update value:</strong><br>
+        <code class="inline-code">distance[v] = weight</code><br><br>
+        Works on any undirected weighted graph
+      </div>
+      <div>
+        <strong>Goal:</strong> Shortest path from source s to all vertices<br><br>
+        <strong>distance[v]</strong> = cumulative <em>path distance</em> from s to v<br><br>
+        <strong>Update condition:</strong><br>
+        <code class="inline-code">distance[u] + weight &lt; distance[v]</code><br><br>
+        <strong>Update value:</strong><br>
+        <code class="inline-code">distance[v] = distance[u] + weight</code><br><br>
+        ⚠️ Fails with negative edge weights
+      </div>
+    </div>
+  </div>
+
+  <h3>Trace Example (Prim's on the standard 7-vertex graph)</h3>
+  <p>Graph: 7 vertices, weighted undirected, starting at vertex 0.</p>
+
+  <div style="overflow-x:auto">
+  <table class="trace-table">
+    <tr>
+      <th>u picked</th>
+      <th>distance[0..6]</th>
+      <th>parent[0..6]</th>
+      <th>in_tree</th>
+    </tr>
+    <tr><td>(init)</td><td>[0, ∞, ∞, ∞, ∞, ∞, ∞]</td><td>[-,-,-,-,-,-,-]</td><td>[F,F,F,F,F,F,F]</td></tr>
+    <tr class="highlight"><td>0</td><td>[0, 5, 7, 12, ∞, ∞, ∞]</td><td>[-, 0, 0, 0, -, -, -]</td><td>[T,F,F,F,F,F,F]</td></tr>
+    <tr><td>1</td><td>[0, 5, 7, 12, 7, ∞, ∞]</td><td>[-, 0, 0, 0, 1, -, -]</td><td>[T,T,F,F,F,F,F]</td></tr>
+    <tr class="highlight"><td>2</td><td>[0, 5, 7, 4, 4, 3, ∞]</td><td>[-, 0, 0, 2, 2, 2, -]</td><td>[T,T,T,F,F,F,F]</td></tr>
+    <tr><td>5</td><td>[0, 5, 7, 4, 2, 3, 2]</td><td>[-, 0, 0, 2, 5, 2, 5]</td><td>[T,T,T,F,F,T,F]</td></tr>
+    <tr class="highlight"><td>4</td><td>[0, 5, 7, 4, 2, 3, 2]</td><td>[-, 0, 0, 2, 5, 2, 5]</td><td>[T,T,T,F,T,T,F]</td></tr>
+    <tr><td>6</td><td>[0, 5, 7, 4, 2, 3, 2]</td><td>[-, 0, 0, 2, 5, 2, 5]</td><td>[T,T,T,F,T,T,T]</td></tr>
+    <tr class="highlight"><td>3</td><td>[0, 5, 7, 4, 2, 3, 2]</td><td>[-, 0, 0, 2, 5, 2, 5]</td><td>[T,T,T,T,T,T,T]</td></tr>
+  </table>
+  </div>
+  <p style="font-size:0.82rem;color:var(--muted)">MST total weight: 5+7+4+3+2+2 = 23. Edges: {0,1}, {0,2}, {2,3}, {2,5}, {5,4}, {5,6}.</p>
+
+  <h3>Complexity</h3>
+  <table>
+    <tr><th>Implementation</th><th>Time Complexity</th></tr>
+    <tr><td>Basic (array scan for next vertex)</td><td class="c-ok">O(n²)</td></tr>
+    <tr><td>With heap-based priority queue</td><td class="c-good">O(m + n log n)</td></tr>
+  </table>
+  <p style="font-size:0.88rem"><strong>Derivation (basic):</strong> While-loop runs n times. Each Next-Vertex scan is O(n) → O(n²) total. For-loop body runs O(m) total across all iterations. Since m ≤ n², overall is O(n²).</p>
+
+  <h3>Important Distinctions</h3>
+  <div class="warning">
+    <strong>MST ≠ Shortest Path Tree.</strong> A path from the root of an MST to another vertex is <em>not necessarily</em> the shortest-distance path in the graph. They can differ! MST minimises total tree weight; shortest path tree minimises path distances from the root.
+  </div>
+  <div class="warning">
+    <strong>Dijkstra fails with negative weights.</strong> It assumes that once a vertex is added to the tree, its shortest distance is finalised. Negative edges can break this assumption.
+  </div>
+  <div class="key-insight">
+    <strong>MST uniqueness:</strong> MSTs are not necessarily unique. However, all MSTs of a graph have the <em>same total weight</em>.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- BACKTRACKING -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="backtracking">
+  <h2>Backtracking</h2>
+
+  <p>Backtracking is an algorithmic technique that generates all (or some) solutions by performing a <strong>DFS on an implicit tree of candidate solutions</strong>.</p>
+
+  <h3>Core Idea</h3>
+  <p>Candidates are built <em>incrementally</em>. You start with an empty (or root) candidate and extend it step by step. If a partial candidate cannot possibly lead to a valid solution, you "backtrack" (return early) and try a different branch.</p>
+
+  <h3>The General Algorithm</h3>
+  <div class="code-block"><span class="kw">def</span> <span class="fn">dfs_backtrack</span>(candidate, input_data, output):
+    <span class="kw">if</span> <span class="fn">is_solution</span>(candidate, input_data):
+        <span class="fn">add_to_output</span>(candidate, output)
+    <span class="kw">else</span>:
+        <span class="kw">for</span> child <span class="kw">in</span> <span class="fn">children</span>(candidate, input_data):
+            <span class="fn">dfs_backtrack</span>(child, input_data, output)</div>
+
+  <h3>The Four Functions You Must Implement</h3>
+
+  <div class="card">
+    <div class="card-title">is_solution(candidate, input)</div>
+    Returns True if candidate is a complete, valid solution. This is the base case — equivalent to reaching a leaf of the implicit tree.
+    <br><em>Example (binary numbers):</em> <code class="inline-code">return len(candidate) == desired_length</code>
+  </div>
+  <div class="card">
+    <div class="card-title">children(candidate, input)</div>
+    Returns a list of candidates that extend the current candidate by one step. These are the children in the implicit tree.
+    <br><em>Example (binary numbers):</em> <code class="inline-code">return [candidate + "0", candidate + "1"]</code>
+  </div>
+  <div class="card">
+    <div class="card-title">add_to_output(candidate, output)</div>
+    Adds the valid solution to the results list.
+    <br><em>Example:</em> <code class="inline-code">output.append(candidate)</code>
+  </div>
+  <div class="card">
+    <div class="card-title">should_prune(candidate)</div>
+    Returns True if we can determine this subtree will never contain a solution. <strong>Pruning</strong> — add this check at the start of dfs_backtrack to improve performance.
+    <br><em>Example (at most four 1s):</em> <code class="inline-code">return candidate.count("1") > 4</code>
+  </div>
+
+  <h3>Complete Example: Binary Numbers of Length n</h3>
+  <div class="code-block"><span class="kw">def</span> <span class="fn">is_solution</span>(candidate, desired_length):
+    <span class="kw">return</span> <span class="fn">len</span>(candidate) == desired_length
+
+<span class="kw">def</span> <span class="fn">children</span>(candidate, desired_length):
+    <span class="kw">return</span> [candidate + <span class="str">"0"</span>, candidate + <span class="str">"1"</span>]
+
+<span class="kw">def</span> <span class="fn">add_to_output</span>(candidate, output):
+    output.<span class="fn">append</span>(candidate)
+
+<span class="kw">def</span> <span class="fn">dfs_backtrack</span>(candidate, desired_length, output):
+    <span class="kw">if</span> <span class="fn">is_solution</span>(candidate, desired_length):
+        <span class="fn">add_to_output</span>(candidate, output)
+    <span class="kw">else</span>:
+        <span class="kw">for</span> child <span class="kw">in</span> <span class="fn">children</span>(candidate, desired_length):
+            <span class="fn">dfs_backtrack</span>(child, desired_length, output)
+
+<span class="kw">def</span> <span class="fn">binary_numbers</span>(n):
+    solutions = []
+    <span class="fn">dfs_backtrack</span>(<span class="str">""</span>, n, solutions)
+    <span class="kw">return</span> solutions</div>
+
+  <h3>The Implicit Tree (n = 3)</h3>
+  <p>The candidates form a tree. Each node is a candidate; edges connect a candidate to its extensions.</p>
+  <div class="code-block">              <span class="str">""</span>
+           /        \
+        <span class="str">"0"</span>          <span class="str">"1"</span>
+       /    \       /    \
+    <span class="str">"00"</span>  <span class="str">"01"</span>  <span class="str">"10"</span>  <span class="str">"11"</span>
+    / \   / \   / \   / \
+  000 001 010 011 100 101 110 111
+  ↑ Solutions are all the leaf nodes ↑</div>
+
+  <h3>Pruning with should_prune</h3>
+  <div class="code-block"><span class="kw">def</span> <span class="fn">dfs_backtrack</span>(candidate, input_data, output):
+    <span class="kw">if</span> <span class="fn">should_prune</span>(candidate):    <span class="cm"># ← check this FIRST</span>
+        <span class="kw">return</span>
+    <span class="kw">if</span> <span class="fn">is_solution</span>(candidate, input_data):
+        <span class="fn">add_to_output</span>(candidate, output)
+    <span class="kw">else</span>:
+        <span class="kw">for</span> child <span class="kw">in</span> <span class="fn">children</span>(candidate, input_data):
+            <span class="fn">dfs_backtrack</span>(child, input_data, output)</div>
+
+  <div class="key-insight">
+    <strong>Pruning is crucial for performance.</strong> should_prune(candidate) must return True if <em>no descendant of candidate</em> can be a valid solution. This cuts off entire subtrees and can drastically reduce runtime (e.g., in Sudoku: prune if any constraint is already violated).
+  </div>
+
+  <h3>Classic Backtracking Problems</h3>
+  <table>
+    <tr><th>Problem</th><th>Candidate</th><th>is_solution</th><th>children</th></tr>
+    <tr>
+      <td>Binary numbers of length n</td>
+      <td>String of 0s and 1s</td>
+      <td>len == n</td>
+      <td>Append "0" or "1"</td>
+    </tr>
+    <tr>
+      <td>Permutations of [1..n]</td>
+      <td>List of placed numbers</td>
+      <td>len == n</td>
+      <td>Append each unused number</td>
+    </tr>
+    <tr>
+      <td>Subsets of a set</td>
+      <td>Partial subset</td>
+      <td>All items considered</td>
+      <td>Include/exclude next item</td>
+    </tr>
+    <tr>
+      <td>Sudoku</td>
+      <td>Partial board</td>
+      <td>All cells filled validly</td>
+      <td>Try 1–9 in next empty cell</td>
+    </tr>
+    <tr>
+      <td>N-queens</td>
+      <td>Positions of placed queens</td>
+      <td>N queens placed safely</td>
+      <td>Next row position that doesn't conflict</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- COMPLEXITY -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="complexity">
+  <h2>Complexity Analysis</h2>
+
+  <h3>Asymptotic Notation</h3>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">O(g) — Upper bound</div>
+      f grows <em>at most</em> as fast as g. There exist constants c > 0 and x₀ such that f(x) ≤ c·g(x) for all x ≥ x₀.
+    </div>
+    <div class="card">
+      <div class="card-title">Ω(g) — Lower bound</div>
+      f grows <em>at least</em> as fast as g. There exist constants c > 0 and x₀ such that c·g(x) ≤ f(x) for all x ≥ x₀.
+    </div>
+    <div class="card">
+      <div class="card-title">Θ(g) — Tight bound</div>
+      f grows <em>at exactly</em> the same rate as g. Θ(g) = O(g) ∩ Ω(g). Both upper and lower bounds are g.
+    </div>
+    <div class="card">
+      <div class="card-title">Key algebraic rule</div>
+      O(g₁ + g₂) = O(max(g₁, g₂)) — Only the dominant term matters. 
+      <br>e.g. O(n + m) where m ≤ n² means this equals O(n²) in the worst case.
+    </div>
+  </div>
+
+  <h3>Complexity Hierarchy (slowest → fastest growth)</h3>
+  <div class="formula-box">O(1) ⊂ O(log n) ⊂ O(n) ⊂ O(n log n) ⊂ O(n²) ⊂ O(2ⁿ) ⊂ O(n!)</div>
+
+  <h3>All Algorithm Complexities</h3>
+  <table>
+    <tr><th>Algorithm</th><th>Time (basic)</th><th>Time (optimised)</th><th>Space</th></tr>
+    <tr>
+      <td>BFS / DFS</td>
+      <td class="c-good">O(n + m)</td>
+      <td>—</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>Connected Components</td>
+      <td class="c-ok">O(n²)</td>
+      <td class="c-good">O(n + m) with component array</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>Strong Connectivity (hub method)</td>
+      <td class="c-good">O(n + m)</td>
+      <td>—</td>
+      <td>O(n + m)</td>
+    </tr>
+    <tr>
+      <td>Topological Sort</td>
+      <td class="c-good">O(n + m)</td>
+      <td>—</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>Prim's (MST)</td>
+      <td class="c-ok">O(n²)</td>
+      <td class="c-good">O(m + n log n) with heap</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>Dijkstra's (SSSP)</td>
+      <td class="c-ok">O(n²)</td>
+      <td class="c-good">O(m + n log n) with heap</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>Backtracking (binary numbers n)</td>
+      <td class="c-bad">O(2ⁿ)</td>
+      <td>Varies with pruning</td>
+      <td>O(n) recursion depth</td>
+    </tr>
+  </table>
+
+  <h3>Python Operation Complexities</h3>
+  <p>These come up in analysis questions — know them well.</p>
+  <table>
+    <tr><th>Operation</th><th>Complexity</th></tr>
+    <tr><td>List indexing (read/write)</td><td class="c-good">Θ(1)</td></tr>
+    <tr><td>List length (len)</td><td class="c-good">Θ(1)</td></tr>
+    <tr><td>List append</td><td class="c-good">Θ(1) amortised</td></tr>
+    <tr><td>List pop (right end)</td><td class="c-good">Θ(1)</td></tr>
+    <tr><td>List slice of length k</td><td class="c-ok">Θ(k)</td></tr>
+    <tr><td>List copy (length n)</td><td class="c-ok">Θ(n)</td></tr>
+    <tr><td>List insert/pop at index k (list length n)</td><td class="c-ok">Θ(n - k)</td></tr>
+    <tr><td>Membership test: x in list</td><td class="c-ok">O(n)</td></tr>
+    <tr><td>Membership test: x in set</td><td class="c-good">Θ(1)</td></tr>
+    <tr><td>min, max, sum of list (length n)</td><td class="c-ok">Θ(n)</td></tr>
+    <tr><td>Sorting list (length n)</td><td class="c-ok">O(n log n), Ω(n)</td></tr>
+  </table>
+
+  <h3>Deriving Prim/Dijkstra Complexity Step-by-Step</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-content"><strong>While-loop runs n times</strong> — once per vertex (each iteration adds exactly one vertex to the tree).</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-content"><strong>next_vertex scan is O(n)</strong> — must check all n vertices to find the minimum distance non-tree vertex.</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-content"><strong>For-loop (across ALL while iterations) is O(m)</strong> — each edge (u,v) is examined at most once (when u is added to the tree).</div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Total:</strong> O(n × n) + O(m) = O(n²) + O(m) = O(n²) since m ≤ n².</div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- QUIZ -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="quiz">
+  <h2>Practice Quiz</h2>
+  <p style="margin-bottom:1.5rem">Test your knowledge. Reveal the answer only after you've thought it through.</p>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q1. In Prim's algorithm, what does distance[v] represent?</div>
+    <div class="quiz-options">
+      <label><input type="radio" name="q1" value="a"> The total path distance from the source vertex s to v</label>
+      <label><input type="radio" name="q1" value="b"> The weight of the cheapest single edge connecting v to the current tree</label>
+      <label><input type="radio" name="q1" value="c"> The number of edges from s to v in the MST</label>
+      <label><input type="radio" name="q1" value="d"> The total weight of the MST found so far</label>
+    </div>
+    <button class="quiz-btn" onclick="reveal(this)">Reveal Answer</button>
+    <div class="quiz-reveal">
+      ✅ <strong>B.</strong> In Prim's, distance[v] is the weight of the cheapest single edge that connects v to the growing tree. This is what distinguishes it from Dijkstra's, where distance[v] = total cumulative path cost from s to v.
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q2. Why does Dijkstra's algorithm fail with negative edge weights?</div>
+    <div class="quiz-options">
+      <label><input type="radio" name="q2" value="a"> Negative weights make the graph cyclic</label>
+      <label><input type="radio" name="q2" value="b"> The algorithm cannot store negative values in the distance array</label>
+      <label><input type="radio" name="q2" value="c"> Once a vertex is added to the tree its distance is assumed final, but a later negative edge could provide a shorter path</label>
+      <label><input type="radio" name="q2" value="d"> The next_vertex function doesn't work with negative values</label>
+    </div>
+    <button class="quiz-btn" onclick="reveal(this)">Reveal Answer</button>
+    <div class="quiz-reveal">
+      ✅ <strong>C.</strong> Dijkstra's greedy assumption is: once a vertex u is added to the tree, distance[u] is finalised. With negative weights, a later path through a negative edge could give a shorter distance to u — but the algorithm has already committed to the wrong answer.
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q3. What is the time complexity of BFS on a graph with n vertices and m edges?</div>
+    <div class="quiz-options">
+      <label><input type="radio" name="q3" value="a"> O(n²)</label>
+      <label><input type="radio" name="q3" value="b"> O(n + m)</label>
+      <label><input type="radio" name="q3" value="c"> O(m log n)</label>
+      <label><input type="radio" name="q3" value="d"> O(n log n)</label>
+    </div>
+    <button class="quiz-btn" onclick="reveal(this)">Reveal Answer</button>
+    <div class="quiz-reveal">
+      ✅ <strong>B. O(n + m).</strong> Initialisation is Θ(n). Each vertex is enqueued/dequeued at most once. Each edge is examined at most once (for directed: once per edge; for undirected: once from each endpoint = 2m total, still O(m)). Total: O(n + m).
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q4. During DFS on a directed graph, when we examine edge (u, v) and v is in state Discovered, what can we conclude?</div>
+    <div class="quiz-options">
+      <label><input type="radio" name="q4" value="a"> v is a leaf node</label>
+      <label><input type="radio" name="q4" value="b"> There is a cycle in the graph</label>
+      <label><input type="radio" name="q4" value="c"> v is the root of the DFS tree</label>
+      <label><input type="radio" name="q4" value="d"> The graph is not connected</label>
+    </div>
+    <button class="quiz-btn" onclick="reveal(this)">Reveal Answer</button>
+    <div class="quiz-reveal">
+      ✅ <strong>B.</strong> In DFS, a vertex is Discovered but not yet Processed means it's currently on the call stack — we haven't finished exploring it. If we find an edge (u, v) where v is Discovered, that means v is an ancestor of u in the DFS tree, so we've found a path from v to v (a cycle). This is the cycle detection algorithm.
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q5. In a backtracking algorithm, the should_prune function should return True when:</div>
+    <div class="quiz-options">
+      <label><input type="radio" name="q5" value="a"> The candidate is a valid solution</label>
+      <label><input type="radio" name="q5" value="b"> No descendant of the candidate can possibly be a valid solution</label>
+      <label><input type="radio" name="q5" value="c"> The candidate has no children</label>
+      <label><input type="radio" name="q5" value="d"> The candidate has already been explored</label>
+    </div>
+    <button class="quiz-btn" onclick="reveal(this)">Reveal Answer</button>
+    <div class="quiz-reveal">
+      ✅ <strong>B.</strong> Pruning cuts off an entire subtree. should_prune must guarantee that <em>no leaf in this subtree</em> is a valid solution. For example in Sudoku: if a row already has two 5s, no completion of that partial board can be valid — prune.
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q6. Which graph representation is generally preferred for BFS and DFS, and why?</div>
+    <div class="quiz-options">
+      <label><input type="radio" name="q6" value="a"> Adjacency matrix, because checking if an edge exists is O(1)</label>
+      <label><input type="radio" name="q6" value="b"> Adjacency list, because iterating all edges is Θ(n + m) vs Θ(n²) for the matrix</label>
+      <label><input type="radio" name="q6" value="c"> Adjacency matrix, because it uses less memory for sparse graphs</label>
+      <label><input type="radio" name="q6" value="d"> Either works equally well for graph traversal</label>
+    </div>
+    <button class="quiz-btn" onclick="reveal(this)">Reveal Answer</button>
+    <div class="quiz-reveal">
+      ✅ <strong>B.</strong> BFS and DFS iterate over all edges. Adjacency list does this in Θ(n + m). Adjacency matrix requires visiting all n entries per vertex = Θ(n²) total. For sparse graphs (m ≪ n²), adjacency lists are much more efficient. Space-wise lists also win: Θ(n + m) vs Θ(n²).
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q7. What is the key structural difference between an MST and a shortest-path tree?</div>
+    <div class="quiz-options">
+      <label><input type="radio" name="q7" value="a"> An MST always has fewer edges than a shortest-path tree</label>
+      <label><input type="radio" name="q7" value="b"> A shortest-path tree is only valid rooted at one specific vertex; an MST's root is arbitrary and path distances may not be shortest</label>
+      <label><input type="radio" name="q7" value="c"> An MST is always unique; a shortest-path tree may not be</label>
+      <label><input type="radio" name="q7" value="d"> They are always the same tree for the same graph</label>
+    </div>
+    <button class="quiz-btn" onclick="reveal(this)">Reveal Answer</button>
+    <div class="quiz-reveal">
+      ✅ <strong>B.</strong> A shortest-path tree is specific to one source vertex — the path from root to any vertex v is the shortest path in the graph. An MST minimises total tree weight, but the path from its root to a vertex might not be the shortest distance path. They solve different problems and can differ significantly.
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q8. Given parent = [None, None, 1, 2, 5, 1, 1], what is the shortest path from vertex 1 to vertex 4?</div>
+    <div class="quiz-options">
+      <label><input type="radio" name="q8" value="a"> 1 → 4</label>
+      <label><input type="radio" name="q8" value="b"> 1 → 2 → 3 → 4</label>
+      <label><input type="radio" name="q8" value="c"> 1 → 5 → 4</label>
+      <label><input type="radio" name="q8" value="d"> 1 → 6 → 4</label>
+    </div>
+    <button class="quiz-btn" onclick="reveal(this)">Reveal Answer</button>
+    <div class="quiz-reveal">
+      ✅ <strong>C: 1 → 5 → 4.</strong> Trace backwards: parent[4] = 5, parent[5] = 1, parent[1] = None (root). So path backwards is 4 ← 5 ← 1, which forwards is 1 → 5 → 4.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3>Coding Challenge</h3>
+  <div class="card">
+    <div class="card-title">Try implementing these</div>
+    <ul>
+      <li style="margin-bottom:0.5rem"><strong>prim(adj, s)</strong> — returns (parent, distance). Remember: distance[v] = edge weight, not path distance.</li>
+      <li style="margin-bottom:0.5rem"><strong>dijkstra(adj, s)</strong> — returns (parent, distance). Remember: distance[v] = distance[u] + weight.</li>
+      <li style="margin-bottom:0.5rem"><strong>dfs_backtrack for permutations</strong> — candidate is a list. Children add one unused element. is_solution when len == n.</li>
+      <li style="margin-bottom:0.5rem"><strong>topological_sort(adj)</strong> — modified DFS that appends to finish_order when Processed, returns reversed list.</li>
+      <li><strong>is_strongly_connected(adj)</strong> — run DFS twice: once on G, once on transpose G^T. Both must reach all vertices from the hub.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<script>
+function showSection(id, link) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  link.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  return false;
+}
+
+function reveal(btn) {
+  const card = btn.closest('.quiz-item');
+  const rev = card.querySelector('.quiz-reveal');
+  if (rev.style.display === 'block') {
+    rev.style.display = 'none';
+    btn.textContent = 'Reveal Answer';
+  } else {
+    rev.style.display = 'block';
+    btn.textContent = 'Hide Answer';
+  }
+}
+</script>
+</body>
+</html>

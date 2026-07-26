@@ -1,0 +1,699 @@
+University of Canterbury
+EMTH210
+
+ENGINEERING MATHEMATICS
+
+Topic 3: Fourier series
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike
+3.0 Unported License. To view a copy of this license, visit http://creativecommons.
+org/licenses/by-nc-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street,
+Suite 900, Mountain View, California, 94041, USA.
+
+2
+
+EMTH210
+
+3.1
+
+FOURIER SERIES
+
+A 2π-periodic function f (x) can have a Fourier Series (F.S.) associated with it:
+∞
+
+a0 X 
++
+an cos(nx) + bn sin(nx) ,
+2
+n=1
+∞
+where the coefficients a0 , {an }∞
+n=1 , {bn }n=1 depend in some way on f (x) (for a preview,
+
+check out the box on page 4). The important point is that for a “nice” function, its
+associated Fourier series is actually equal to the function itself, so we can write:
+∞
+
+a0 X 
++
+an cos(nx) + bn sin(nx) .
+f (x) =
+2
+n=1
+
+When we encounter an inhomogeneous ODE with a RHS which we can’t tackle by the
+method of undetermined coefficients, we will use the FS to rewrite the RHS in terms of
+sines and cosines, which can be tackled with the method of undetermined coefficients.
+There are many other uses of FS, which in turn is just one part of the wider subject
+of Fourier analysis. Joseph Fourier1 (1768–1830) invented FS in order to solve the heat
+equation in a metal plate.
+
+It might be that only a finite number of the coefficients an and bn are non-zero, in which
+case we have a finite Fourier series. On the other hand, it may be that an infinite number
+of the coefficients are non-zero.
+
+Note that because sin(nx) and cos(nx) are 2π-periodic, (or rather 2π is the shortest period common to all), the FS is also 2π periodic.
+
+1
+
+Interesting chap. An important part of the French Revolution, later chummy with Napoleon Bona-
+
+parte. Discovered the greenhouse effect. Was keen on heat flow (Fourier’s law) and vibrations (Fourier
+analysis) in general: ironically, tripped on the blanket he was wearing to keep warm and died after falling
+down the stairs.
+
+EMTH210
+
+3
+
+An example of a Fourier series is that if f (x) = x on −π < x < π then
+f (x) =
+ie a0 =
+
+, an =
+
+∞
+X
+2
+
+n
+n=1
+
+(−1)n+1 sin(nx),
+
+for all n, and bn =
+
+for all n.
+
+For the idea of Fourier series to be useful, we need to know how to get an and bn . We do
+so by use of the orthogonality property of the set S of functions
+S = {1, sin(x), cos(x), sin(2x), cos(2x), . . . },
+which is that
+
+for any two different functions ϕ1 (x) and ϕ2 (x) in S.
+This can be a very useful shortcut.
+Example 3.1.1
+Show that the orthogonality property holds for the pair of functions ϕ1 (x) = sin(nx), ϕ2 (x) =
+sin(kx) where k and n are natural numbers, and k ̸= n.
+Solution.
+
+♦
+
+4
+
+EMTH210
+
+Now, when ϕ1 (x) = ϕ2 (x) we get either
+Z π
+
+sin2 (kx) dx = π
+
+or
+
+Z −π
+π
+
+cos2 (kx) dx = π or
+−π
+Z π
+12 dx = 2π.
+−π
+
+We use orthogonality and these last three properties to get the FS coefficients.
+
+∞
+
+a0 X 
+f (x) =
++
+an cos(nx) + bn sin(nx) ,
+2
+n=1
+
+where
+Z
+1 π
+a0 =
+f (x) dx
+π −π
+Z
+1 π
+an =
+f (x) cos(nx) dx
+π −π
+Z
+1 π
+bn =
+f (x) sin(nx) dx.
+π −π
+Note that some books omit the 1/2 from the a0 /2 term, in which case the factor in front
+of the a0 integral becomes 1/2π. Either way, you get the same series, of course. But it is
+best to stick with one definition, and we will use the one in the box.
+
+The above concerns functions on the symmetric interval (−π, π). Later, we will generalise
+to any interval, at which point our definition of the FS and its coefficients will change.
+The general version is the one on the formula sheet.
+
+EMTH210
+
+5
+
+Example 3.1.2
+Derive the formula for bn by considering
+
+Rπ
+−π
+
+f (x) sin(nx) dx.
+
+Solution.
+
+♦
+The other derivations are similar.
+
+6
+
+3.2
+
+EMTH210
+
+ODD AND EVEN FUNCTIONS
+
+A function is odd if it satisfies f (−x) = −f (x). E.g. x, x3 , x5 , x7 , sin x, tan x, sinh x.
+A function is even if it satisfies f (−x) = f (x). E.g. 1, x2 , x4 , x6 , cos x, cosh x, |x|.
+They satisfy the following multiplication and addition properties.
+odd × odd = even,
+
+odd × even = odd,
+
+and
+
+even × even = even
+
+odd + odd = odd,
+
+odd + even = neither,
+
+and
+
+even + even = even
+
+ODD FUNCTIONS
+For an odd function f (x),
+Z π
+
+1
+a0 =
+π
+
+f (x) dx = 0,
+−π
+
+since the interval is symmetric about 0. f (x) cos(nx) is odd, so
+1
+an =
+π
+
+Z π
+f (x) cos(nx) dx = 0,
+−π
+
+for all n, but f (x) sin(nx) is even, so
+2
+bn =
+π
+
+Z π
+f (x) sin(nx) dx,
+0
+
+for all n.
+EVEN FUNCTIONS
+For an even function f (x),
+Z
+2 π
+a0 =
+f (x) dx
+π 0
+Z
+2 π
+an =
+f (x) cos(nx) dx,
+π 0
+for all n, as f (x) cos(nx) is even, but f (x) sin(nx) is odd so
+1
+bn =
+π
+for all n.
+
+Z π
+f (x) sin(nx) dx = 0
+−π
+
+EMTH210
+
+7
+
+Example 3.2.1
+Find the Fourier series of
+f (x) = x on −π < x < π,
+with f (x + 2π) = f (x).
+Solution.
+
+♦
+
+8
+
+EMTH210
+
+Example 3.2.2
+Find the Fourier series of the following function:
+
+
+−1
+if −π ≤ x < 0
+f (x) =
+
+ 1
+if 0 ≤ x < π,
+
+with f (x + 2π) = f (x).
+
+y
+1
+−π
+
+Solution.
+
+π x
+−1
+
+EMTH210
+
+9
+
+♦
+If we were also asked to sketch the FS, we would draw something like this:
+f (x)
+1
+−3π
+
+3.3
+
+−2π
+
+π
+
+−π
+
+2π
+
+−1
+
+3π x
+
+GIBBS’S PHENOMENON
+
+We have already seen that the function
+
+
+−1
+−π ≤ x < 0
+f (x) =
+
+ 1
+0≤x<π
+
+has FS
+
+∞
+X
+4
+f (x) =
+sin(nx).
+nπ
+n=1
+n odd
+
+If we include only the first N terms as an approximation to f (x) we get erroneous oscillations close to corners of the square wave. Here are the first 20 terms:
+y
+1
+−3π
+
+−2π
+
+−π
+
+π
+
+0π
+
+2π
+
+3π x
+
+−1
+
+If the file is played as sound (or if the phenomenon is a naturally aural one) then these
+oscillations make a ringing sound. This phenomenon is named not after its discoverer
+(typical), but rather its populariser, JW Gibbs. The maximum height of the oscillations
+near the jump discontinuities do not go to zero as N → ∞. This causes all manner of
+problems in signal processing, for example in MRI scans.
+
+10
+
+EMTH210
+
+3.4
+
+FUNDAMENTAL HARMONICS
+
+Consider the following finite FS:
+f (x) = 4 + sin(x) + 12 sin(2x) + 35 sin(5x).
+The ‘4’ is the constant term which is the average value of f (x) over one period . The
+shortest period common to all terms is 2π. The fundamental frequency is 1/(shortest period) .
+Here,
+fundamental frequency =
+
+1
+.
+2π
+
+• The sin(x) term is the fundamental frequency term 2 , because its frequency (the
+inverse of its period) is equal to the fundamental frequency.
+• The 12 sin(2x) term is the 2nd harmonic 3 , because its frequency is twice the fundamental frequency (so not just because there is a ‘2’ in there).
+• The 35 sin(5x) term is the 5th harmonic 4 , because its frequency is five times the
+fundamental frequency.
+In the above example, the FS is missing some harmonics, namely the
+and everything above the
+
+,
+
+. Likewise, a FS may also miss a fundamental term,
+
+although it will always have a fundamental frequency, as in the following example.
+
+2
+
+Musicians among you may know this as the fundamental tone.
+Musicians: 1st overtone.
+4
+Musicians: 4th overtone.
+3
+
+,
+
+EMTH210
+
+11
+
+Example 3.4.1
+Find the fundamental frequency and identify the harmonic terms of the FS
+f (x) = 4 + sin(2x) + cos(3x).
+Solution.
+
+♦
+
+12
+
+3.5
+
+EMTH210
+
+ANOTHER EXAMPLE
+
+Example 3.5.1
+Find the Fourier series of the function
+f (x) = π − |x|
+with f (x + 2π) = f (x).
+Solution.
+
+−π < x < π,
+
+EMTH210
+
+13
+
+♦
+
+3.6
+
+NOT A FOURIER SERIES
+
+Example 3.6.1
+Why is the following not a FS?
+f (x) = cos(x) +
+
+√
+√
+1
+1
+1
+cos( 2x) + cos(2x) + cos( 8x) + . . .
+2
+4
+8
+
+Solution.
+
+♦
+
+14
+
+3.7
+
+EMTH210
+
+F.S. IN UNDETERMINED COEFFICIENTS
+
+The main use of FS in this course will be to rewrite unusual right hand sides of ODEs in
+terms of sines and cosines, which we know how to deal with in the method of undetermined
+coefficients. Here is an illustrative example.
+Example 3.7.1
+A mass m = 1kg is suspended on a spring which hangs vertically. The spring obeys
+Hooke’s law with a spring constant k whose square root is not a natural number. Let
+t be time and y be the displacement of the mass from the equilibrium position, where
+downwards is positive, and is the direction in which gravity acts. The mass-spring system
+is subject to forcing from the force f (t). Find the position of the mass at all positive
+times when the forcing takes the form
+f (t)
+2
+
+π
+and continues in this way for all positive times.
+Solution.
+
+2π
+
+3π
+
+t
+
+EMTH210
+
+15
+
+16
+
+EMTH210
+
+♦
+
+EMTH210
+
+3.8
+
+17
+
+GENERALISATION TO ARBITRARY PERIOD p
+
+The following is very important, because we generalise what we have learned about FS of
+2π-periodic functions to enable us to find the FS of a p-periodic function5 .
+So let us take a 2π-periodic function which we have already studied, namely
+−π <x<π
+
+f (x) = x on
+which has Fourier series f (x) =
+
+∞
+X
+2
+
+n
+n=1
+
+with f (x) = f (x + 2π).
+
+(−1)n+1 sin(nx).
+
+Now suppose that in both the original definition and the FS, we put x = 2πt/p, where p
+is some non-zero number, and t is a variable:
+
+
+2πt
+= g(t) say.
+f (x) = f
+p
+Now our new function g(t) has period p. The Fourier series for g(t) is simply
+
+
+∞
+X
+2nπt
+2
+n+1
+(−1)
+sin
+g(t) =
+,
+n
+p
+n=1
+after making the substitution. Graphically, we have gone from
+π
+
+−3π
+
+−2π
+
+f (x)
+
+π
+
+−π
+
+x
+3π
+
+2π
+
+−π
+to
+π
+
+− 3p
+2
+5
+
+−p
+
+− p2
+
+g(t)
+
+p
+2
+
+p
+
+3p t
+2
+
+−π
+
+What we don’t get into here, but which is nevertheless important, is that almost any function can be
+
+thought of as p-periodic for some p, if you truncate it, focus on only a certain range of interest, or chop
+it into suitable pieces.
+
+18
+
+EMTH210
+We can generalise the definition of Fourier series to work with any periodic function f (x) of period p:
+
+
+
+
+∞ 
+X
+1
+2nπx
+2nπx
+f (x) = a0 +
+an cos
++ bn sin
+2
+p
+p
+n=1
+where
+Z
+2
+a0 =
+f (x) dx
+p one period
+
+
+Z
+2
+2nπx
+an =
+dx
+f (x) cos
+p one period
+p
+
+
+Z
+2
+2nπx
+bn =
+f (x) sin
+dx
+p one period
+p
+Note that we do not have to integrate from −p/2 to p/2. It is sufficient
+to integrate over any interval [A, A + p], for some convenient A.
+
+The above can by proved by orthogonality on the set
+
+
+
+1, sin
+
+
+
+
+
+2nπx
+2nπx
+, cos
+,... .
+p
+p
+
+If we set p = 2π then we retrieve exactly the definition we have been working with.
+You are much more likely to be tested on the general form of the FS than the FS of a
+2π-periodic function. Also, it is this general form which appears on the formula sheet.
+
+EMTH210
+
+19
+
+Example 3.8.1
+Find the FS of the function
+
+f (x) =
+
+
+
+
+
+
+0
+
+
+
+sin(πx)
+Solution.
+
+−1 ≤ x < 0
+0 ≤ x < 1.
+
+20
+
+EMTH210
+
+♦
+
+

@@ -1,0 +1,890 @@
+University of Canterbury
+EMTH210
+
+ENGINEERING MATHEMATICS
+
+Topic 4: Eigen problems
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike
+3.0 Unported License. To view a copy of this license, visit http://creativecommons.
+org/licenses/by-nc-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street,
+Suite 900, Mountain View, California, 94041, USA.
+
+2
+
+4.1
+
+EMTH210
+
+REVIEW OF FINDING DETERMINANTS
+
+This section on cofactor expansion should all be revision for you. The determinant |A| of
+an n × n matrix A can be defined recursively by
+det(A) = |A| =
+
+n
+X
+
+aij (−1)i+j |Mij |
+
+for any fixed j, or
+
+aij (−1)i+j |Mij |
+
+for any fixed i,
+
+i=1
+
+=
+
+n
+X
+j=1
+
+(i.e. we can calculate along rows or columns) where aij is the element of A in row i and
+column j
+
+
+
+a1n
+
+a2n 
+.. 
+,
+. 
+
+an1
+
+ann
+
+a11 a12 . . .
+
+ a21 a22 . . .
+A=
+..
+ ..
+.
+ .
+
+and where (−1)i+j is the so-called “checkerboard” sign
+
+1
+i 2
+3
+4
+
+1
++
+−
++
+−
+
+j
+2
+−
++
+−
++
+
+3 4
++ −
+− +
++ −
+− +
+
+and where Mij is the ij th minor of A, that is A with the ith row and j th column deleted,
+such that for example
+
+
+
+
+a11 a12 a13
+
+
+A = a21 a22 a23 
+a31 a32 a33
+
+−→
+
+
+
+"
+#
+... ... ...
+
+
+a
+a
+.
+21
+23
+.
+
+M12 = 
+.
+a21 . a23  = a
+31 a33
+..
+a31 . a33
+
+So |A| = sum along any row or column, element by element, of “checkerboard sign ×
+element × element’s determinant of element’s minor”. This method is called “cofactor
+expansion”.
+
+EMTH210
+
+3
+
+Example 4.1.1
+Find the determinant of
+
+"
+
+#
+a b
+A=
+.
+c d
+
+Solution.
+
+♦
+
+Example 4.1.2
+Find the determinant of
+
+1
+0
+
+A=
+0
+1
+
+0
+1
+2
+0
+
+3
+0
+1
+0
+
+
+0
+1
+
+.
+2
+3
+
+Solution.
+
+♦
+
+4
+
+EMTH210
+
+4.2
+
+EIGENVALUES and EIGENVECTORS
+
+Ax transforms x to another vector, which could be longer or shorter, and could be in
+a different direction. The eigenvectors of A are the vectors whose direction is preserved
+under this transformation.
+The eigenvectors of a square matrix A are the non-zero vectors v that remain proportional
+to v when they are multiplied by A. In other words, they are the v ̸= 0 for which
+Av = λv
+
+(1)
+
+where λ, a scalar, is called the eigenvalue associated with the eigenvector v.
+You will note that the eigenvectors and eigenvalues “belong” to the square matrix A – we
+speak of “the eigenvalues and eigenvectors of A”. The German word for “characteristic”
+or “own” is “eigen”.
+In (1) both λ and v are unknowns. Finding these unknowns for a given matrix A is
+called solving an eigen problem1 . Other non-matrix problems in which the unknowns also
+depend on an unknown parameter are sometimes referred to as eigenproblems.
+Example 4.2.1 " #
+1
+Show that v =
+is an eigenvector of the following matrix, and find its associated
+1
+eigenvalue:
+"
+#
+1 4
+A=
+.
+3 2
+Solution.
+
+♦
+1
+
+Or eigenvalue problem, etc.
+
+EMTH210
+
+5
+
+So we see that by definition an eigenvector v of a matrix A is a vector whose direction is
+unchanged by the transformation A; it is only stretched or compressed, and the eigenvalue
+gives the stretch.
+The general method to solve Av = λv for v and λ is as follows.
+Av = λv ⇐⇒ Av − λv = (A − λI)v = 0,
+where I is the identity matrix. Now we have already said that v ̸= 0. Imagine that our
+new matrix A − λI had an inverse, call it B. Then if we multiplied both sides of our
+equation by B (on the left) then on the LHS we would get B(A − λI)v = v while on
+the RHS we would get B0 = 0. Since the LHS equals the RHS this tells us that v = 0,
+which we know it can’t be. So we have found that if (A − λI) has an inverse then we get
+a contradiction. Therefore (A − λI) can’t have an inverse – it must be singular. Recall
+that a singular matrix is one whose determinant is zero. Hence the strategy to find the
+eigenvalues and eigenvectors of A is
+
+1. Solve det (A − λI) = 0 for the eigenvalues λ.
+2. Then solve (A − λI)v = 0 for the eigenvectors v.
+
+Example 4.2.2
+Find the eigenvalues and eigenvectors of
+"
+
+#
+1 4
+A=
+.
+3 2
+Solution.
+
+6
+
+EMTH210
+
+♦
+
+EMTH210
+
+7
+
+Eigenvalues and eigenvectors are a crucial part of engineering mathematics. Over the
+next few lectures, we will see them applied to solving systems of differential equations,
+and to describing the strain of materials placed under shear stress.
+Example 4.2.3
+Find the eigenvalues and eigenvectors of the following matrix:
+"
+#
+2 1
+A=
+.
+1 2
+Solution.
+
+8
+
+EMTH210
+
+♦
+
+4.3
+
+TWO POINTS
+
+Firstly, while there is no room for argument about the eigenvalues of a given matrix,
+eigenvectors are only unique in terms of their direction. This is maybe clear from the
+definitions, but also note that if {v; λ} is an eigen pair then so is {kv; λ} for any non-zero
+constant k as
+A(kv) =
+
+.
+
+The second point is that eigenvalues need not be real, and they can be complex even when
+A is real. If they are complex then they occur in complex conjugate pairs. Consider the
+following example.
+
+EMTH210
+
+9
+
+Example 4.3.1
+Find the eigenvalues and eigenvectors of the following matrix:
+"
+#
+0 −1
+A=
+.
+1
+0
+Solution.
+
+♦
+
+10
+
+4.4
+
+EMTH210
+
+SYSTEMS OF 1st ORDER ODEs
+
+Suppose that the concentration y1 , y2 of two reacting chemicals is given by the pair of
+equations
+dy1
+= y1 − 2y2
+dt
+dy2
+ẏ2 =
+= −3y1 .
+dt
+ẏ1 =
+
+A more compact "form
+# of writing these equations would be"as a matrix
+# product, by defining
+y1
+1 −2
+the vector y =
+, and the coefficient matrix A =
+. In this way, we can
+y2
+−3
+0
+replace the above pair of equations with the single matrix equation
+ẏ =
+
+dy
+= Ay.
+dt
+
+Generalising, suppose that we have N variables y1 , y2 , . . . , yN whose rate of change with
+time depends on some linear combination of these variables. Let y = (y1 , y2 , . . . , yN ) and
+write the system of N first order linear ODEs as a single matrix DE, namely
+dy
+= Ay.
+dt
+
+(2)
+
+Because this is a system of linear DEs, linear combinations of solutions will also be
+solutions, much like our solutions of single second order DEs. With the second order
+DEs, our solutions mostly had the form emt (where m may be complex), and constantcoefficients linear DEs of other orders have solutions of that form too. This motivates
+investigating an ansatz y = veλt , for some scalar λ and vector v. In fact, what we are
+doing with this vector equation is taking all of the individual ansatzes, yi = vi eλt for i = 1
+to N , and putting them into a vector. Now ẏ = Ay becomes λveλt = Aveλt . As eλt ̸= 0
+for any value of t or λ, we must have λv = Av.
+In other words, y = veλt is a solution to (2) if λ is an eigenvalue of A and v is a
+corresponding eigenvector:
+y = veλt =⇒
+so the DE (2) is satisfied.
+
+dy
+= vλeλt = λveλt = Aveλt = Ay,
+dt
+
+EMTH210
+
+11
+The solution of our system of ODEs requires the eigenvalues λi
+and the associated eigenvectors vi of the matrix of coefficients A.
+Because of the linearity of (2) its general solution is
+y=
+
+N
+X
+
+ci v i e λ i t ,
+
+i=1
+
+where the ci are constants.
+Example 4.4.1
+Find the general solution of
+
+
+ 
+4
+0 −1
+3
+d
+
+
+ 
+y = 3
+1 −1 y with initial conditions y(0) = 2 .
+dt
+2
+0
+1
+1
+Solution.
+
+12
+
+EMTH210
+
+EMTH210
+
+13
+
+♦
+You should give some thought to what this means. How do each of the variables behave?
+What have we actually done?
+
+14
+
+4.5
+
+EMTH210
+
+EXTENSION TO 2nd ORDER PROBLEMS
+
+The extension is quite straightforward, but there are a few subtleties in the method which
+we develop through the following example. You should put a box around the key points,
+as there is no summary to follow.
+Example 4.5.1
+Consider a system of three identical Hookean springs with spring constant k, and two
+identical masses of mass m, with m/k = 1, connected as follows. The first spring is
+connected to a fixed point on the left, the first mass is connected to the right end of
+the first spring, the second spring to the right of the mass, the second mass to the right
+end of the second spring, and the third spring to the right of the second mass and to a
+fixed point on the right. The masses are sitting on a frictionless horizontal surface; the
+displacements from equilibrium of the two masses are y1 and y2 , and are positive to the
+right. Find the displacements at any positive time t.
+Solution.
+
+EMTH210
+
+15
+
+16
+
+EMTH210
+
+♦
+Let us interpret our result. The system has two modes of oscillation, which may occur
+together or separately (depending on the values of the arbitrary constants), as follows.
+" #
+1
+1. When σ 2 = λ1 = −1, the eigenvector
+means that both masses have the same
+1
+, with frequency
+.
+displacement, i.e. they
+" #
+1
+2. When σ 2 = λ2 = −3, the eigenvector
+means that the two masses have equal
+−1
+but opposite displacements, in other words their movements are 180◦ out of phase.
+This mode has a higher frequency of
+
+.
+
+Since the initial conditions give the values of a1 , a2 , b1 , b2 , we should be able to start the
+experiment in such a way that we see either pure in-phase motion (a2 = b2 = 0), pure
+anti-phase motion (a1 = b1 = 0), or some combination thereof.
+
+EMTH210
+
+4.6
+
+17
+
+REMARKS ON REPEATED EIGENVALUES
+
+An n × n matrix always has n eigenvalues, but some of them may be repeated. In that
+case, the matrix may have < n linearly independent2 eigenvectors. However, the matrix
+may still have the full complement of eigenvectors3 as does the matrix
+"
+#
+3 0
+A=
+,
+0 3
+since
+0 = det (A − λI) =
+
+3−λ
+0
+= (3 − λ)2 =⇒ λ = 3, 3
+0
+3−λ
+
+(i.e. one eigenvalue, 3, which is repeated).
+" # But the matrix
+" # A does have a pair of linearly
+1
+0
+independent eigenvectors, for example
+and
+.
+0
+1
+On the other hand, if we are solving a system of n ODEs and the n×n matrix of coefficients
+has repeated eigenvectors and has less than n linearly independent eigenvectors, then our
+method of solution will not work in its current form.
+Example 4.6.1
+"
+
+#
+0 1
+Find the eigenvalues and eigenvectors of A =
+.
+−1 2
+Solution.
+
+2
+
+We have already observed that if v is an eigenvector then kv is also, for any k ̸= 0, but the key thing
+
+is generating linearly independent eigenvectors.
+3
+There is a test to determine how may eigenvectors a matrix has, but this is for the future.
+
+18
+
+EMTH210
+
+♦
+As an aside, we can take a look at why this happens. Consider the ODE
+d2 y
+dy
+− 2 + y = 0.
+2
+dt
+dt
+
+(3)
+
+The auxiliary equation is m2 − 2m + 1 = 0 with repeated root m = 1. We learned how to
+deal with this, finding that the general solution is
+y = c1 et + c2 tet .
+
+(4)
+
+We now write this one second order ODE as two first order ODEs4 . First, we set
+y = y1
+
+and y2 =
+
+dy1
+,
+dt
+
+so that equation (3) implies that
+d2 y 1
+dy2
+dy1
+=
+=2
+− y1 = 2y2 − y1 .
+2
+dt
+dt
+dt
+So in matrix form our one second order ODE becomes the system of two ODEs
+" # "
+#" #
+0 1 y1
+d y1
+=
+.
+dt y2
+−1 2 y2
+We solved such systems by starting with
+" #
+y1
+y=
+= veλt ,
+y2
+which excludes the second part of (4) =⇒ the matrix must be an eigenvector short.
+Therefore this method doesn’t always work; it can fail with repeated eigenvalues.
+4
+
+This is how you would solve this second order ODE using the built-in ODE solvers of SciPy, for
+
+example.
+
+EMTH210
+
+4.7
+
+19
+
+PRINCIPAL AXES OF AN ELLIPSE
+
+A circle is inscribed on the face of a block of material. The block is then subject to
+compression and shear forces which deform the circle into an ellipse.
+By choosing the principal axes of the ellipse as new coordinate axes we can replace these
+forces with compressions only. In other words, we wish to find a new coordinate system
+in which the major and minor axes of the ellipse are aligned with the coordinate axes
+instead of at an angle to them. A picture might look like the following.
+v
+
+y
+u
+
+x
+
+Let us see what the theory would need. Suppose that our ellipse is given by
+4x2 + 2xy + 4y 2 = 30.
+The presence of the ‘2xy’ term immediately tells us that this ellipse is at angle to the
+(x, y)-axes. It is this “cross term” that we wish to eliminate by choosing new coordinates
+(u, v) with which to describe the ellipse. To do so, we first write the ellipse as a “quadratic
+form”:
+"
+#" #
+h
+i a b x
+Q = 4x2 + 2xy + 4y 2 = x y
+b c y
+for some a, b and c (note the symmetry of the two bs). Expanding the RHS we get
+
+So
+a=
+
+,
+
+2b =
+
+=⇒ b =
+
+,
+
+c=
+
+.
+
+20
+
+EMTH210
+
+Annotate the following for a more easily-remembered shortcut:
+"
+#" #
+h
+i 4 1 x
+Q = 4x2 + 2xy + 4y 2 = x y
+.
+1 4 y
+As we said above, we want to change to new variables u and v so that
+"
+#" #
+h
+i λ 0
+u
+1
+Q= u v
+0 λ2 v
+
+(5)
+
+=
+
+=
+because λ1 u2 +λ2 v 2 = 30 is an ellipse with the u and v coordinate axes as its principle axes
+(note the absence of any cross term). The next section outlines how to define (u, v) and
+λ1,2 in terms of the eigenvalues and eigenvectors of the matrix of the quadratic form, and
+to relate (u, v) to (x, y). This diagonalisation of matrices – so called because everything
+off the diagonal becomes zero – is important not only for describing strains as mentioned
+above, but also for a range of numerical techniques.
+
+4.8
+
+DIAGONALISING A MATRIX
+
+An n × n matrix A is called diagonalisable if and only if there is a non-singular matrix P
+and a diagonal matrix D such that
+P −1 AP = D.
+The following are all equivalent definitions of the diagonalisability of A:
+
+Aside: note that such a P exists if and only if A has n linearly independent eigenvectors.
+
+EMTH210
+
+21
+
+For example, for a 2 × 2 matrix A, AP = P D gives,
+"
+#
+h
+i h
+i λ 0
+1
+A v1 v2 = v1 v2
+,
+0 λ2
+where the column vector vi is the ith column of P and λi is the ith diagonal element of
+D. Multiplying out
+h
+i h
+i
+Av1 Av2 = λ1 v1 + 0 0 + λ2 v2 ,
+and since these two matrices are equal, their columns are equal, so Av1 = λ1 v1 and
+Av2 = λ2 v2 ; the λi , vi are the eigenvalue/vector pairs of A.
+To diagonalise the n × n matrix A:
+1. Find the eigenvalue/eigenvector pairs λi , vi .
+2. Form a matrix P whose columns are the eigenvectors.
+3. Form a diagonal matrix D whose diagonal elements are the eigenvalues
+in the same order in which the eigenvectors were placed in P .
+4. Then P −1 AP = D.
+Although it seems as if we don’t really use P , the matrix of eigenvectors, we will shortly
+see that P is essential for finding the principal axes of an ellipse (amongst other uses).
+Example 4.8.1
+"
+Diagonalise the matrix A =
+
+#
+
+4 1
+.
+1 4
+
+Solution.
+
+♦
+
+22
+
+EMTH210
+
+Example 4.8.2
+Return to the motivating example from the beginning of this section, and find the principle
+axes of its ellipse, 4x2 + 2xy + 4y 2 = 30.
+Solution.
+
+EMTH210
+
+23
+
+24
+
+EMTH210
+
+♦
+The new coordinate axes (u, v) can be sketched" on
+# the"old
+# (x, y)
+" axes
+# and their directions
+u
+1
+0
+are given by v1 and v2 (found by considering
+=
+and
+).
+v
+0
+1
+To find the principal axes of an ellipse:
+1. Write the equation for the ellipse in matrix form as on page 20.
+2. Work through the box on page 21 to diagonalise the matrix, choosing the
+eigenvector scaling that makes them unit vectors.
+3. Use the diagonal matrix in the quadratic form to find the equation of the
+ellipse in the new (principal axes) coordinate system (as above).
+4. Use P to find how the new coordinate system relates to the old (as above).
+5. Sketch the ellipse if required.
+See also the thoroughly-worked example coming up.
+
+EMTH210
+
+4.9
+
+25
+
+ORTHOGONAL MATRICES
+
+In the last example it was essential that the matrix P had the property that its transpose was equal to its inverse. Matrices with the property that P T = P −1 are called
+orthogonal. In this short section, we examine a little bit of the theory behind orthogonal
+matrices. From the definition, a simple test as to whether a given matrix is orthogonal
+is to check if you get the identity matrix when you multiply the matrix by its transpose:
+If P T P = I then P is orthogonal .
+Example 4.9.1
+"
+#
+4 3
+1
+Is the matrix P =
+orthogonal?
+5 −3 4
+Solution.
+
+♦
+
+Any orthogonal matrix P can be written in terms of its columns, each column being a
+h
+i
+column vector: P = x1 x2 x3 , so that P T P = I gives
+
+ 
+
+ 
+1 0 0
+xT1 h
+xT1 x1 xT1 x2 xT1 x3
+i
+
+ 
+
+ T
+x2  x1 x2 x3 = xT2 x1 xT2 x2 xT2 x3  = 0 1 0
+xT3
+0 0 1
+xT3 x1 xT3 x2 xT3 x3
+where xTi xj ≡ xi · xj , (i.e. the dot product).
+By inspection,
+x1 · x1 = x2 · x2 = x3 · x3 = 1.
+In other words, all the columns of P have
+xi · xj = 0,
+i.e. all the columns of P are
+
+. Also,
+i ̸= j,
+.
+
+26
+
+EMTH210
+So when diagonalising the matrix in an ellipse’s
+quadratic form we use
+h
+
+P = v̂1 v̂2 . . .
+
+v̂n
+
+i
+
+where v̂i is the normalised eigenvector vi /∥vi ∥.
+Example 4.9.2
+Show that for eigenvalues of a symmetric matrix A, different eigenvectors are always
+mutually perpendicular provided they have different eigenvalues.
+Solution.
+
+♦
+Note that if v1 and v2 share the same eigenvalue then the eigenvectors can be chosen to
+be perpendicular, but this is beyond the scope of this course.
+
+EMTH210
+
+27
+
+Let’s apply everything we have learned in a last example.
+Example 4.9.3
+Draw the following ellipse in xy-coordinates.
+Q = 6x2 + 4xy + 9y 2 = 20.
+Solution.
+
+28
+
+EMTH210
+
+EMTH210
+
+29
+
+♦
+
+

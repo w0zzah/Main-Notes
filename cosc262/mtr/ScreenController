@@ -1,0 +1,43 @@
+package seng201.tut2.gui;
+
+import seng201.tut2.RocketManager;
+
+/**
+ * Abstract parent class for all {@link RocketManager} UI controller classes.
+ * @author seng201 teaching team
+ */
+public abstract class ScreenController {
+
+    private final RocketManager rocketManager;
+
+    /**
+     * Creates an instance of a ScreenController with the given {@link RocketManager}
+     * @param rocketManager The rocket manager used by this ScreenController
+     */
+    protected ScreenController(final RocketManager rocketManager) {
+        this.rocketManager = rocketManager;
+    }
+
+    /**
+     * Gets the FXML file that will be loaded for this controller.
+     *
+     * @return The full path to the FXML file for this controller
+     */
+    protected abstract String getFxmlFile();
+
+    /**
+     * Gets the screen title for this controller.
+     *
+     * @return The title to be displayed for this screen
+     */
+    protected abstract String getTitle();
+
+    /**
+     * Gets the rocket manager associated with this screen controller.
+     * @return The rocket manager for this controller
+     */
+    protected RocketManager getRocketManager() {
+        return rocketManager;
+    }
+}
+

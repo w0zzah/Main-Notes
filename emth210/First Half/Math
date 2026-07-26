@@ -1,0 +1,4533 @@
+University of Canterbury
+EMTH210
+
+ENGINEERING MATHEMATICS
+
+Topic 1: Partial differentiation
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike
+3.0 Unported License. To view a copy of this license, visit http://creativecommons.
+org/licenses/by-nc-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street,
+Suite 900, Mountain View, California, 94041, USA.
+
+2
+
+1.1
+
+EMTH210
+
+PARTIAL DERIVATIVES
+
+Recall that for
+f = f (x, y),
+where x and y are independent variables,
+f (x + ∆x, y) − f (x, y)
+∂f
+= lim
+∆x→0
+∆x
+ ∂x
+
+∂f
+∂f
+= fx =
+= rate of change of f with respect to x with y held constant.
+∂x
+∂x y
+The notation
+
+∂f
+means “differentiate f with respect to x while holding y, z, and w
+∂x y,z,w
+
+
+
+constant”. Often, as above, there is only one variable in the “held constant” list.
+Example 1.1.1
+Find the partial derivatives of
+f = y 3 e2x + 5 sin(xy).
+Solution.
+
+♦
+
+EMTH210
+
+1.2
+
+3
+
+HIGHER PARTIAL DERIVATIVES
+∂ 2f
+∂
+=
+2
+∂x
+∂x
+
+
+
+∂f
+∂x
+
+
+
+∂ 2f
+∂
+=
+∂x∂y
+∂x
+
+
+
+∂f
+∂y
+
+
+etc . . .
+
+Example 1.2.1
+Consider the Gas Law:
+P (V, T ) =
+
+nRT
+V
+
+where P = pressure, V = volume, T = temperature, and n and R are constants. Find all
+first and second partial derivatives. (Note that T and V are independent).
+
+Solution.
+
+♦
+
+Note:
+∂ 2P
+∂ 2P
+=
+∂T ∂V
+∂V ∂T
+
+This is called equality of mixed partial derivatives. This happens if and only if
+
+4
+
+EMTH210
+
+1.3
+
+TAYLOR SERIES in 2D
+
+f (x + ∆x, y + ∆y) = f (x, y + ∆y) + ∆x
+
+∂f
+(x, y + ∆y) + higher order terms in ∆x
+∂x
+
+
+
+∂f
+∂f
+= f (x, y) + ∆y
+(x, y) + · · · + ∆x
+(x, y) + . . .
+∂y
+∂x
+
+f (x + ∆x, y + ∆y) = f (x, y) + ∆x
+
+∂f
+∂f
+(x, y) + ∆y
+(x, y) + higher order terms
+∂x
+∂y
+
+Example 1.3.1
+Find the 2D Taylor series up to the first order terms of the ideal gas law from example
+1.2.1.
+
+Solution.
+
+♦
+If ∆V and ∆T are small we therefore have the so-called linear approximation
+P (V + ∆V, T + ∆T ) ≈
+
+nRT
+nRT
+nR
+−
+∆V +
+∆T.
+2
+V
+V
+V
+
+EMTH210
+
+1.4
+
+5
+
+CHAIN RULE
+
+Let f (x, y) = temperature. Move along the path given by x = x(t), y = y(t). What is df
+dt
+along path?
+
+The 2D Taylor series gives
+∆f = f (x + ∆x, y + ∆y) − f (x, y)
+
+=
+
+∂f
+∂f
+∆x +
+∆y + higher order terms
+∂x
+∂y
+
+But
+∆x = x(t + ∆t) − x(t) =
+
+dx
+∆t + higher order terms
+dt
+
+and similarly for ∆y, so
+
+∆f =
+
+∂f dx
+∂f dy
++
+∂x dt
+∂y dt
+
+
+∆t + higher order terms
+
+Therefore, since
+df
+∆f
+= lim
+,
+∆t→0 ∆t
+dt
+we have the 2D chain rule
+df
+∂f dx ∂f dy
+=
++
+.
+dt
+∂x dt
+∂y dt
+The chain rule can be visualised by a dependence tree. The form of the tree depends on
+the form of the function. In the above case, it looks like
+
+6
+
+EMTH210
+∂x
+∂t
+∂f
+∂x
+
+x
+
+t
+
+y
+
+t
+
+f
+
+∂f
+∂y
+
+∂y
+∂t
+
+Example 1.4.1
+when
+Find df
+dt
+f = x2 + y 2
+
+,
+
+x = 3t ,
+
+y = t2 .
+
+Solution.
+
+♦
+
+EMTH210
+
+7
+
+Example 1.4.2
+A ship is sailing due East. Let t = time, x = distance East, s = ship speed, and s and t
+be independent. Furthermore, let the temperature measured by the ship at (x, t) be
+√
+f = f (x, t) = 20 + 10−3 x t,
+and the ship’s distance East be given by x = st. Find the time rate of change of temperature if the ship’s speed is fixed.
+
+Solution.
+
+♦
+
+8
+
+EMTH210
+
+Note that we can interpret the formula as follows.
+
+
+∂f
+∂t
+
+
+=
+s
+
+Total rate
+of change
+
+
+
+∂f
+∂x
+
+
+t
+
+∂x
+∂t
+
+rate of
+=
+
+
++
+
+s
+
+∂f
+∂t
+
+
+
+speed
+
+change with ×
+
+of temperature
+
+
+
+going
+
+distance
+
+rate of change
++
+
+of temp with
+
+east
+
+east
+
+1.5
+
+x
+
+time at ship’s
+current position
+
+IMPLICIT PARTIAL DIFFERENTIATION
+
+The van der Waals modification of the perfect gas law P V = nRT is
+
+
+P+
+
+a
+(v − b) = RT,
+v2
+
+(1)
+
+where v = volume per mole of gas (= V /n) and a and b are constants. We cannot find
+
+
+∂v
+∂T
+
+
+P
+
+∂
+explicitly (why not?). But we can do so, implicitly, by taking ∂T
+of both sides of (1)
+
+(holding P fixed and assuming that P and v are
+
+), to get
+
+−2a
+∂v 
+a  ∂v
+(v
+−
+b)
++
+P
++
+= R.
+v3
+∂T
+v 2 ∂T
+∂v
+∂v
+This expression is linear in ∂T
+. Solve for ∂T
+:
+
+
+
+∂v
+∂T
+
+
+=
+P
+
+R
+
+,
+(v
+−
+b)
+P + va2 − 2a
+3
+v
+
+provided
+P+
+
+a
+2a
+− 3 (v − b) ̸= 0.
+2
+v
+v
+
+EMTH210
+
+9
+
+Example 1.5.1
+For the functions
+F = r erθ
+
+(2)
+
+H = r + θ sin(r)
+
+(3)
+
+find
+
+
+∂F
+∂H
+
+
+θ
+
+and list the independent variables.
+Solution.
+
+♦
+
+10
+
+EMTH210
+
+Example 1.5.2
+The variables x, y, and z are linked via
+F = F (x, y, z) = 0
+
+(4)
+
+where F is a smooth function of x, y, and z. The function F is sufficiently complicated
+that F (x, y, z) = 0 can not be solved analytically for z in terms of x and y. Find
+ 
+∂z
+∂x y
+in terms of the partial derivatives of F . List the independent variables.
+Solution.
+
+♦
+
+EMTH210
+
+1.6
+
+11
+
+GRADIENT
+
+In 2D the gradient (or gradient vector ) of a function, written ∇f , is
+ 
+fx
+∂f
+∂f
+i+
+j =  ,
+∇f =
+∂x
+∂y
+fy
+while in 3D it is
+ 
+f
+ x
+ 
+∇f = fx i + fy j + fz k = fy  ,
+ 
+fz
+where i = (1, 0, 0)T etc., as usual.
+
+The symbol ∇ (commonly called ‘grad’, ‘del’, or ‘nabla’) is a “vector” of operators:
+ 
+∂
+∂
+∂
+∂x 
+
+∇=i
++j
+=
+(2D)
+∂x
+∂y
+∂
+∂y
+
+
+∇=i
+
+
+
+∂
+ ∂x 
+
+∂
+∂
+∂
+ 
++j
++k
+=∂
+∂x
+∂y
+∂z  ∂y 
+
+(3D)
+
+∂
+∂z
+
+So for example, if
+f = x2 + y 2 ,
+then
+
+∇f =
+
+
+
+∂
+ ∂x 
+∂
+∂y
+
+
+(x2 + y 2 ) =
+
+
+
+ 
+2x
+= 
+∂
+(x2 + y 2 )
+2y
+∂y
+
+∂
+(x2 + y 2 )
+ ∂x
+
+
+and
+
+ 
+6
+∇f (3,1) =   .
+2
+
+The latter is the gradient at the point (3, 1).
+
+Some definitions: f (x, y) is a scalar function of two variables (one scalar output, two
+scalar inputs). ∇f (x, y) is a vector-valued function of two variables (2D vector output,
+two scalar inputs). A vector-valued function whose output dimension matches its input
+dimension is called a vector field, so ∇f is also a vector field. We will see more types of
+vector-valued function and vector field soon.
+
+12
+
+EMTH210
+
+We can represent some of the values of ∇f (x, y) in a vector field plot. Here is one for the
+upper right quadrant.
+y
+9
+8
+7
+6
+5
+4
+3
+2
+1
+x
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+At a representative set of points (x, y), the vector-valued function (here ∇f ) is evaluated
+and the vectors it produces are drawn positioned at each corresponding (x, y). Drawing
+them to scale can be a bit problematic, as you can see above, so we often scale the vectors
+we draw, for example below are the same vectors drawn at 1/20 their true length:
+y
+9
+8
+7
+6
+5
+4
+3
+2
+1
+x
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+EMTH210
+
+1.7
+
+13
+
+DIRECTIONAL DERIVATIVE
+
+Consider the slope of f (x, y) along the straight line
+ 
+ 
+ 
+x
+x
+u
+  =  0 + t   ,
+y
+y0
+w
+
+ 
+u
+where   = v is a unit vector.
+w
+
+Then
+df
+=
+dt
+
+=
+
+= ∇f · v.
+So
+
+slope of f in direction v at (x0 , y0 ) = Dv f (x0 ,y0 ) =
+
+df
+dt
+
+
+
+ 
+u
+= ∇f
+· 
+(x0 ,y0 )
+(x0 ,y0 )
+w
+
+This is called the directional derivative of f in the direction v, and is often written as Dv f
+and Dv f (x0 ,y0 ) . It represents the derivative of f along direction v at the point (x0 , y0 ).
+
+14
+
+EMTH210
+
+Example 1.7.1
+Find the directional derivative of
+
+f = x2 − y 2
+
+at (1, 3) along
+
+
+
+1
+1
+v = √  .
+2
+3
+Draw a sketch.
+
+Solution.
+
+♦
+
+EMTH210
+
+1.8
+
+15
+
+STEEPEST ASCENT/DESCENT
+
+Recalling the properties of the scalar product, we write
+
+Dv f = ∇f · v = ∥∇f ∥ ∥v∥ cos ϕ
+
+where ϕ is the angle between v and ∇f :
+
+∇f
+
+ϕ
+v
+
+But ∥v∥ = 1, (because
+
+), so
+
+−∥∇f ∥ ⩽ ∇f · v ⩽ ∥∇f ∥.
+
+In particular, ∇f · v = ∥∇f ∥ when
+
+=⇒ ∇f is the direction of steepest ascent
+
+Now ϕ =
+
+gives cos ϕ = −1 and ∇f · v = −∥∇f ∥.
+
+=⇒ −∇f is the direction of steepest descent.
+
+16
+
+EMTH210
+
+Example 1.8.1
+The temperature T of a plate is
+T = 20 + 5 sin (x) cos (x − y).
+In which direction should an ant at (0, π) move in order to cool off as quickly as possible?
+Solution.
+
+♦
+
+EMTH210
+
+1.9
+
+17
+
+PERPENDICULAR TO LEVEL SURFACES
+
+If ∇f ̸= 0 then
+∇f · v = 0 ⇐⇒ ∇f and v are perpendicular.
+(where v is a unit vector).
+
+That is,
+
+In particular,
+Hence ∇f is perpendicular to the level curves/surfaces of f .
+For example, for the function
+f = x2 + y 2 ,
+the level curves are circles centred on the origin, and
+ 
+2x
+∇f =   .
+2y
+We can draw a sketch:
+y
+3
+∇f (1, 1) = (2, 2)
+2
+√
+
+2
+1
+
+(1, 1)
+
+level curve x2 + y 2 = f (1, 1) = 2
+
+1
+
+√
+
+2
+
+2
+
+3
+
+x
+
+It is a good exercise to show that at the point (x, y) = (cos θ, sin θ), the tangents to the
+level curve and the gradient of f at that point are indeed perpendicular.
+
+18
+
+1.10
+
+EMTH210
+
+TANGENT PLANE
+
+The equation of a plane through the point (x0 , y0 , z0 ) with a normal vector n orthogonal
+to the plane is
+
+
+x − x0
+
+
+
+
+(r − r0 ) · n =  y − y0  · n = 0.
+
+
+z − z0
+Example 1.10.1
+What is the tangent plane to the surface S given by
+z = 4 − x2 − y 2
+at the point (x0 , y0 , z0 ) = (1, 1, 2)?
+Solution.
+
+♦
+
+EMTH210
+
+19
+
+Example 1.10.2
+Implicitly find the tangent plane of the sphere
+f (x, y, z) = x2 + y 2 + z 2 − 1 = 0.
+Solution.
+
+♦
+
+20
+
+1.11
+
+EMTH210
+
+DIFFERENTIALS
+
+Take y = f (x). Fix x and treat dx as an independent variable. Define dy via
+dy = f ′ (x) dx.
+
+(5)
+
+We call dy a differential (in 1D). Expression (5) is the equation of the tangent line at
+
+
+x, f (x) with dx and dy as variables and the origin for dx, dy located at x, f (x) :
+
+tangent line at x, f (x)
+
+y
+dy
+
+y = f (x)
+
+f (x)
+
+dx
+
+x
+
+x
+
+The equivalent differential in 2D, for z = f (x, y), is
+dz = fx dx + fy dy,
+
+which is an equation of the tangent plane at x, y, f (x, y) . So for example when
+z = f (x, y) = 1 − x2 − y 2 ,
+the differential is
+dz = −2x dx − 2y dy.
+The 3D (and higher) version follows the pattern.
+
+EMTH210
+
+1.12
+
+21
+
+TOTAL DIFFERENTIAL
+
+If f = f (x, y) then
+df =
+
+∂f
+∂f
+dx +
+dy
+∂x
+∂y
+
+is called the total differential of f . The 3D version follows similarly. It is easier to
+remember
+
+df = ∇f · dr
+
+ 
+ 
+dx
+ 
+dx
+ 
+where dr =   in 2D, and dr = dy  in 3D.
+ 
+dy
+dz
+
+Example 1.12.1
+Find the total differential of
+f = x2 + 4y 2 − 3xz.
+Solution.
+
+♦
+
+22
+
+1.13
+
+EMTH210
+
+THE JACOBIAN
+
+The Jacobian, or Jacobian matrix, is a matrix of all the first derivatives relating to a
+vector-valued function.
+
+
+f (x, y, z)
+. The corresponding Jacobian matrix is
+Let F(x, y, z) = 
+g(x, y, z)
+
+
+ 
+fx fy fz
+∇f T
+,
+=
+JF = 
+T
+∇g
+gx gy gz
+where the subscript on JF indicates that it is the Jacobian of F.
+This relates to differentials as follows. Let f = f (x, y, z) and g = g(x, y, z). The chain
+rule gives
+df = fx dx + fy dy + fz dz
+and
+dg = gx dx + gy dy + gz dz.
+These two equations can be put in matrix form as
+ 
+ 
+ dx
+
+ dx
+  
+T 
+
+df
+f f f  
+ ∇f   
+  =  x y z 
+dy  .
+dy  =
+∇g T  
+gx gy gz  
+dg
+dz
+dz
+Using F the Jacobian can also be written as
+
+
+∂
+∂
+∂
+F
+F
+F .
+JF =
+∂x
+∂y
+∂z
+
+
+f (x, y)
+
+
+
+
+If instead we have G(x, y) =  g(x, y) , the Jacobian would be
+
+
+h(x, y)
+
+ 
+
+fx fy
+∇f T
+
+ 
+
+
+  T
+JG =  gx gy  =  ∇g  .
+
+ 
+
+T
+hx hy
+∇h
+The function being differentiated changes down the rows, and the variable you differentiate
+with respect to changes across the columns.
+
+EMTH210
+
+23
+
+Example 1.13.1
+
+
+x2 y + xz
+
+
+
+
+Find the Jacobian of F(x, y, z) =  sin(xy) .
+
+
+xyz
+e
+Solution.
+
+♦
+
+1.14
+
+EXACT AND INEXACT DIFFERENTIALS
+
+A differential
+P (x, y) dx + Q(x, y) dy
+is called exact if and only if there is a function f (x, y) such that
+df = fx dx + fy dy = P dx + Q dy
+
+(6)
+
+i.e. a differential is exact if and only if it is equal to the total differential of a function
+(called f here). Otherwise P dx + Q dy is inexact. Combining (6) and equality of mixed
+partial derivatives gives a quick test for exactness:
+
+P dx + Q dy EXACT ⇐⇒ Py = Qx
+Test your understanding of this derivation by showing that in 3D with P dx+Q dy +R dz,
+exactness requires all of the following to hold: Py = Qx ; Pz = Rx ; and Qz = Ry .
+
+24
+
+EMTH210
+
+Example 1.14.1
+Determine whether the following differentials are exact:
+
+
+1
+(a) P dx + Q dy = 2(x − y) dx − 2x +
+dy;
+y
+
+(b) P dx + Q dy = x2 dx + x dy.
+
+Solution.
+
+♦
+Example 1.14.2
+Find a function f whose total differential df is equal to the exact differential in example
+(1.14.1).
+Solution.
+
+♦
+
+EMTH210
+
+1.15
+
+25
+
+(ELEMENT OF) ARC LENGTH
+
+On a curve x = f (t) and y = g(t), Pythagoras tells us that ds2 = dx2 + dy 2 . Hence
+i
+ds = (f ) + (g ) (dt)2
+2
+
+h
+
+′ 2
+
+′ 2
+
+or
+s
+
+ds = ±
+
+p
+ds = ± (f ′ )2 + (g ′ )2 dt , or even
+dx
+dt
+
+2
+
+
++
+
+dy
+dt
+
+2
+dt .
+
+The sign is chosen to make the length ds positive. Sketch:
+
+1.16
+
+LINE INTEGRALS
+
+Standard integral: area = sum of areas of rectangles (in limit). Sketch: Area of rectangle
+
+at t is f (t) × dt = height × width. Sum these areas and take the limit as dt → 0, to get
+Z b
+area =
+
+f (t) dt.
+a
+
+Now consider a curve C given by x = x(t) and y = y(t). This is called a parametric form
+of the curve, because the x and y coordinates are given in terms of a parameter, t. What
+is the area beneath C? Sketch:
+
+26
+
+EMTH210
+
+area = (limit of) sum of areas of rectangles
+Z b
+
+f x(t), y(t) ds
+=
+a
+
+= (height) × (width)
+ds = element of arc length.
+s 
+ 2
+2
+dx
+dy
+ds = ±
++
+dt.
+dt
+dt
+Note the ± here. The sign is chosen to make ds positive. So if dt is positive (a < b) we
+choose the +, while if dt is negative (a > b) we choose the −. This is very important.
+Example 1.16.1
+The position of a particle at time t is x = t2 , y = 23 t3 . Find the distance the particle
+travels from t = 0 to t = 1.
+Solution.
+
+♦
+
+EMTH210
+
+27
+
+Aside:
+Z
+s=
+
+Z
+ds =
+
+ds
+dt
+dt
+
+p
+ds
+= ẋ2 + ẏ 2 = particle’s speed
+dt
+In general, the basic solution strategy is as follows.
+1. Write the curve in terms of a parameter (ie x = x(t) and y = y(t)). (Called
+“parameterising the curve” or “putting the curve in parametric form”, etc.)
+2. Write f , ds and limits in terms of the parameter t.
+3. This yields an ordinary integral — do the integration to get the final answer.
+Example 1.16.2
+Find
+Z
+I=
+
+xy ds,
+C0
+
+where C0 is the arc of the unit circle from θ = 0 to θ = π/2.
+Solution.
+
+♦
+
+28
+
+EMTH210
+
+Suppose we are confronted with the integral along a non-smooth curve, as in the following
+example.
+Example 1.16.3
+Z
+Evaluate the integral
+
+xy ds, where C is the path starting at (1, 0), going along a straight
+C
+
+line to (1, 1), then along a straight line to (0, 1).
+y
+C2
+
+1
+
+C1
+x
+
+1
+
+Splitting the integral up into a sum of integrals along “nice” (smooth) curves by making
+a finite number of breaks at “bad” (non-smooth) points is maybe a natural thing to do.
+But it is not obvious that the value of the integral is unchanged by doing this. The fact
+that the value is the same is a result of slightly deeper math than we have time for. But
+it is true! That means for each of the smooth segments of the curve, we follow the basic
+solution strategy from the previous example, then sum the results:
+Z
+
+Z
+xy ds =
+
+C
+
+Z
+xy ds +
+
+C1
+
+xy ds.
+C2
+
+That means parameterising two straight lines, totally independently (though we may call
+both parameters t). Here’s the best way to do that in general:
+The straight line from a to b is r = a + t(b − a), where t goes from 0 to 1.
+r is (x, y) or (x, y, z), and a and b are the position vectors of the start and end points.
+Solution.
+
+EMTH210
+
+29
+
+♦
+Important note:
+y
+C2
+
+1
+
+C0
+
+C1
+
+x
+
+1
+Z
+
+Z
+̸=
+
+C1 +C2
+
+!!!
+C0
+
+I.e.: line integrals are (usually) path dependent as well as
+Later on we will learn the circumstances under which they are path independent.
+
+.
+
+30
+
+EMTH210
+
+1.17
+
+THINGS OTHER THAN ‘ds’
+
+Can have line integrals with ‘dx’ or ‘dy’ rather than ‘ds’. Use exactly the same approach,
+(namely, parameterise and rewrite everything in terms of parameters), except:
+dt or dy = dy
+dt;
+1. use dx = dx
+dt
+dt
+2. dx or dy may be negative (unlike ds).
+Example 1.17.1
+y
+4
+Find
+Z
+(x − y) dx
+
+I=
+C
+
+where C is the curve y = x2 for x from 0 to 2:
+
+C
+x
+
+2
+Solution.
+
+♦
+
+EMTH210
+
+1.18
+
+31
+
+WORK DONE BY A FORCE
+
+Example 1.18.1
+Suppose that a position-dependent force F(x, y) is applied to a particle as it moves along
+the curve C, which is the straight line segment from A to B, where
+
+
+x+y
+,
+F(x, y) = 
+x−y
+and A = (0, 1), B = (2, 0). The following diagram shows the curve C and the force vector
+F at a few different points.
+
+y
+A
+
+C
+
+B
+
+x
+
+ 
+dx
+F · dr where dr =  , and discuss the physical meaning of W .
+Find W =
+C
+dy
+Z
+
+Solution.
+
+32
+
+EMTH210
+
+♦
+Example 1.18.2
+Imagine that we want to calculate the weight per unit length of a channel of water. “Per
+unit length” means that —assuming things are constant in the “length” direction — we
+can consider only a 2D problem, as follows. The sides of an elliptical channel are given
+by x = 5 cos θ, y = 3 sin θ and −π ⩽ θ ⩽ 0. Suppose that the channel is full of water of
+density ρ to height y = 0. Find the total downwards force of water on the ground.
+Solution.
+First a quick sketch:
+
+EMTH210
+
+33
+
+♦
+Note that the parameterisation of the ellipse was given to us here, but we won’t always
+be so lucky. Be able to parameterise circles, ellipses, straight lines, polynomial curves (eg
+y = ax3 + bx — set x = t), and learn all the examples from class and tutorials.
+
+34
+
+1.19
+
+EMTH210
+
+LINE INTEGRALS OF EXACT DIFFERENTIALS
+
+Suppose we want to find
+Z B
+I=
+
+2xy dx + x2 dy
+
+A
+
+where A = (1, 0) and B = (2, 4).
+Such a question immediately raises suspicions because we haven’t been given the curve
+along which to integrate. Sallying bravely forth regardless, we spot something interesting:
+the integrand is an exact differential. Line integrals of exact differentials are easier to do:
+the methodology is given in the following solution, and briefly summarised at the end of it.
+
+Consider a curve — any curve — x = x(t) and y = y(t), where
+
+x(tA ), y(tA ) = (1, 0)
+
+and
+
+
+x(tB ), y(tB ) = (2, 4).
+
+(The notation tA just means “the value of t when we are at A”.) The point here is that
+the curve is not specified, only two points on it. Then, following the standard procedure,
+
+Z tB 
+dx
+2 dy
++x
+dt
+I=
+2xy
+dt
+dt
+tA
+But now we exploit the fact that the integrand is an exact differential, by replacing it with
+something simpler. First, we can show that for f = x2 y we have df = 2xy dx + x2 dy.
+Next, we get
+dx
+df
+dy
+= 2xy
++ x2
+dt
+dt
+dt
+by the
+
+. So
+Z tB
+I=
+tA
+
+by the
+
+t
+
+B
+df
+dt = f (t)
+dt
+tA
+
+, where
+
+f (tB ) = f x(tB ), y(tB ) = f (2, 4),
+
+and so
+I = f (2, 4) − f (1, 0) = 16.
+
+EMTH210
+
+35
+
+The really important thing to note is that in calculating I we never used any information
+about the curve x = x(t), y = y(t)! None was even available! This only happens for exact
+differentials. So line integrals of exact differentials depend only on the endpoints, not the
+path — they are “path independent”. In summary, the technique for exact differentials is:
+Z B
+P dx + Q dy exact =⇒ I =
+
+Z tB
+df = f (xB , yB ) − f (xA , yA ).
+
+P dx + Q dy =
+A
+
+tA
+
+Example 1.19.1
+Z (2,3)
+Find I =
+y dx + x dy along the line x = 2t, y = 3t for 0 ⩽ t ⩽ 1 by:
+(0,0)
+
+1. using the technique of integrating along the path;
+2. using the technique of finding a function we have an exact differential of.
+Solution.
+
+♦
+
+36
+We have already noted that P dx + Q dy exact =⇒
+
+EMTH210
+RB
+A
+
+P dx + Q dy is path independent.
+
+Although we could never check in practice, it is possible to incontrovertibly prove matheRB
+matically that the converse holds, namely that if A P dx + Q dy is path independent for
+all A and B then P dx + Q dy is exact.
+Example 1.19.2
+Use the notion of the integral of exact differentials to show that the work done by gravity
+on a mass m is mgh, where g is the acceleration due to gravity and h is the change in
+height of the mass.
+Solution.
+
+♦
+
+EMTH210
+
+37
+
+Deep point: if ∃ϕ such that F = ∇ϕ for a force F, we see that the work done by F is
+path independent. In this case, the work done along a closed path is zero. Such forces
+are called
+
+.
+
+WARNING: some functions (including inverse trigonometric functions) are multivalued.
+When these functions occur, integrals of exact differentials can be path dependent, as in
+the following example.
+Example 1.19.3
+Discuss the value of
+x dy − y dx
+,
+x2 + y 2
+C
+
+Z
+I=
+
+where C is the unit circle in the xy-plane.
+Solution.
+
+♦
+
+38
+
+1.20
+
+EMTH210
+
+DIVERGENCE
+
+We start with a definition:
+
+
+f (x, y)
+
+∇ · v = divergence of vector field v where v = 
+g(x, y)
+
+
+∇·v =
+
+  
+f
+∂f
+∂g
++
+· =
+∂x ∂y
+∂
+g
+∂y
+
+∂
+ ∂x 
+
+What does the divergence represent? To approach this question, first recall (Lecture 1):
+∂f
+f (x + ∆x, y) − f (x, y)
+= lim
+∂x ∆x→0
+∆x
+Now let v = (f, g)T be the velocity of a fluid in the xy-plane, and consider a small, fixed
+oblong ABCD placed in the flow. The following diagram labels the oblong and the outflow across the two sides perpendicular to the x axis.
+
+y + ∆y
+
+D
+
+flow across AD
+= −f (x, y)∆y
+
+A
+
+y
+
+x
+
+C
+
+B
+
+flow across BC
+= f (x + ∆x, y)∆y
+
+x + ∆x
+
+EMTH210
+
+39
+
+So the net outflow across the two sides perpendicular to the x axis is
+flow across AD + flow across BC
+=
+
+Since the oblong has area ∆x∆y, the net outflow across edges AD and BC per unit area
+is
+
+and so cancelling the ∆y terms and taking the limit of smaller and smaller oblongs, we find
+∂g
+= net outflow across edges AD and BC per unit area. The ∂y
+term is the same
+that ∂f
+∂x
+
+for sides AB and CD. So ∇ · v = net outflow of fluid (with velocity v) per unit area .
+
+An incompressible fluid with no sources or sinks has ∇ · v = 0 where v = velocity. More
+generally, such a fluid has
+∇ · v > 0 =⇒ net outflow (source) (near the point)
+∇ · v < 0 =⇒ net inflow (sink) (near the point)
+Example 1.20.1
+
+
+x2 y + xz
+
+
+
+
+
+
+
+Find the divergence of f =  sin(xy) .
+
+
+xyz
+e
+Solution.
+
+♦
+
+40
+
+EMTH210
+
+Example 1.20.2
+The heat in an opaque 2D solid spreads by diffusion. If the temperature is T , then
+Fourier’s law says that the heat flow is
+q = −k∇T,
+where k is a positive constant known as the thermal conductivity. Interpret Fourier’s law
+in terms of the isotherms of the solid.
+Solution.
+
+♦
+Example 1.20.3
+Now suppose that the 2D solid has a temperature field T = xy. Discuss the temperature
+change at a point, and sketch the isotherms and heat flow lines.
+Solution.
+
+♦
+Two things to note about this example.
+1. Pointwise temperatures do not change even though heat is flowing.
+2. The temperature field is time invariant; such a non-uniform time-invariant temperature field in a conducting medium must be maintained somehow, for example by
+heating and cooling at the boundaries in a specific way.
+
+EMTH210
+
+41
+
+Example 1.20.4
+Repeat the previous example, but now with a temperature field of T = x2 + y 2 on the
+unit disc x2 + y 2 ⩽ 1. There is no need to draw a sketch.
+
+Solution.
+
+♦
+
+1.21
+
+TWO BASIC RESULTS
+
+Let
+  
+
+u
+u(x, y)
+
+v= =
+w
+w(x, y)
+be a 2D vector field, and ϕ = ϕ(x, y) be a scalar field on the plane. The following hold1 :
+
+1.
+∇ · (ϕv) =
+
+=
+
+=
+
+∇ · (ϕv) = ∇ϕ · v + ϕ∇ · v
+1
+
+They hold in higher dimensions too, with suitable changes in notation
+
+42
+
+EMTH210
+2.
+∇ · (∇ϕ) =
+
+=
+
+=
+This is called the
+
+of ϕ and is often written ∇2 ϕ, or even △ϕ:
+∇ · (∇ϕ) = ∇2 ϕ = △ϕ = ϕxx + ϕyy
+
+1.22
+
+CONSERVATION OF MASS
+
+Let:
+• ρ = density (mass per unit volume) of a chemical = ρ(x, y, z, t);
+• f = flow (mass velocity per unit volume) of the chemical = f (x, y, z, t);
+• s = amount (mass per unit volume per unit time) of the chemical created per unit
+volume = s(x, y, z, t).
+Then:
+• ∂ρ
+= time rate of change of density, ie, mass per unit volume per unit time;
+∂t
+• ∇ · f = rate of outflow of chemical per unit volume, ie, mass per unit volume per
+unit time.
+So conservation of mass is
+∂ρ
+= s − ∇ · f.
+∂t
+
+EMTH210
+
+43
+
+Example 1.22.1
+Derive the conservation of mass equation for a substance of density ρ being carried by a
+fluid flowing with velocity v with no sources or sinks.
+Solution.
+
+♦
+Example 1.22.2
+In the scenario of the previous example, suppose now that
+ 
+x
+ 
+ 
+v = 0
+ 
+0
+and ρ is spatially constant at time t = 0. Discuss the rate of change in the density of the
+chemical at all locations at t = 0.
+Solution.
+
+♦
+
+44
+
+1.23
+
+EMTH210
+
+ROTATION (in 2D)
+
+Starting with the 2D vector field
+ 
+f
+v= 
+g
+we define the rotation of v as
+rot(v) =
+
+∂g ∂f
+−
+.
+∂x ∂y
+
+The meaning of this formula is derived as follows. Let us suppose that v is a flow, and
+consider the flow along the edges of the small rectangle ABCD placed in the flow:
+
+−f (x, y + ∆y)∆x
+y + ∆y
+
+y
+
+D
+
+C
+
+A
+
+B
+f (x, y)∆x
+
+x
+
+x + ∆x
+
+So the total flow along edges AB and CD divided by the area of the rectangle is
+
+Hence
+[f (x, y) − f (x, y + ∆y)]∆x
+∂f
+=−
+∆y→0
+∆x∆y
+∂y
+lim
+
+(by definition.)
+
+EMTH210
+
+45
+
+So we can say:
+−
+
+∂f
+=
+∂y
+
+,
+
+∂g
+=
+∂x
+
+,
+so
+
+rot(v) = net circulation of v per unit area.
+
+Note that just as we have seen with the divergence, the “per unit area” is crucial.
+
+1.24
+
+CURL
+
+The three-dimensional equivalent of rot is the curl which can be defined as
+
+curl(v) = ∇ × v =
+
+i
+
+j
+
+k
+
+∂
+∂x
+
+∂
+∂y
+
+∂
+∂z
+
+f
+
+g
+
+h
+
+,
+
+where
+
+
+
+f (x, y, z)
+
+
+
+
+v =  g(x, y, z) 
+
+
+h(x, y, z)
+
+ 
+1
+ 
+ 
+and i = 0 ,
+ 
+0
+
+etc. (the standard basis vectors).
+
+Expanding out the determinant gives
+
+
+
+
+
+
+
+
+∇×v =
+
+
+
+
+
+
+
+
+.
+
+
+
+
+It is important to note that the curl of a vector is a vector.
+An alternative notation is curl(v) = ∇ ∧ v.
+
+46
+
+EMTH210
+
+Example 1.24.1
+ 
+z
+ 
+ 
+Find ∇ × x.
+ 
+y
+Solution.
+
+♦
+When the flow is 2D and independent of z then ∇ × v becomes
+
+
+0−0
+
+
+
+
+
+∇ × v =  0 − 0  = (gx − fy )k = rot (f, g) k
+
+
+gx − f y
+that is, a vector which points solely in the z-direction and whose magnitude is the rotation
+rot(v). This means that we can “forget” the definition of rot, and only remember that it
+is the 2D version of the curl. In fact, we get an extra piece of information for free: the
+curl of a 2D flow field is a vector perpendicular to the plane of the flow. In fact, we have
+the following important point in any number of dimensions: the direction of ∇ × v is
+the axis about which the circulation occurs and its length is the size of the
+circulation (per unit area).
+
+EMTH210
+
+47
+
+One not-so-obvious consequence of this is that if v is a fluid velocity and ∇ × v = 0,
+then each particle of fluid doesn’t rotate although the body of fluid can rotate as a whole.
+Consider the following examples.
+
+Example 1.24.2
+Let
+
+
+y
+
+
+
+ 
+ 
+v1 = −x
+ 
+0
+
+
+,
+
+v2 =
+
+y
+
+ 
+1
+ 
+−x .
+x2 + y 2  
+0
+
+1. Show that ∇ × v1 ̸= 0 and sketch the vector field v1 .
+2. Show that ∇ × v2 = 0 and sketch the vector field v2 .
+Solution.
+
+
+
+48
+
+EMTH210
+
+♦
+Example 1.24.3
+There are many vector identities with curl; prove the following:
+∇ × (∇f ) = 0.
+Solution.
+
+♦
+
+EMTH210
+
+49
+
+The converse of the above is also true: if ∇ × F = 0 then ∃ϕ such that F = ∇ϕ. Consequence: if F is a force field for which curl(F) = 0 then it is conservative and line integrals
+are path independent. It is also then true that ∇ × (∇ϕ) = 0.
+
+We’ve now seen three crucial definitions and interpretations involving the symbol ∇:
+grad (gradient), div (divergence), and curl. Grad acts on scalar fields, and gives you a
+. Div acts on vector fields and gives you a
+on vector fields and gives you a
+
+. Curl acts
+
+. These three will appear very frequently
+
+over the next few years.
+Example 1.24.4
+A solid body rotates about the z axis with angular velocity ω radians per second. A
+particle of the solid body at the point (x, y, z) has velocity v given by
+ 
+−y
+ 
+ 
+v = ω  x .
+ 
+0
+Calculate the circulation of the velocity vector field using the curl. Perform a check by
+calculating the net circulation of v per unit area around a circle radius R centred on the
+origin and lying in the x, y plane.
+Solution.
+
+50
+
+EMTH210
+
+♦
+
+1.25
+
+LAGRANGE MULTIPLIERS (CONSTRAINED MAXIMA
+AND MINIMA)
+
+In 2D a point (x0 , y0 ) is called a stationary point of the function f (x, y) if and only if the
+function is flat in every direction: ∇f |(x0 ,y0 ) = 0.
+
+Why? First, if this is so then for any direction u, the directional derivative Du f = ∇f ·u =
+0 at (x0 , y0 ): f is flat at (x0 , y0 ). Conversely, if ∇f ̸= 0 then taking u = ∇f /∥∇f ∥ gives
+Du f > 0 and D−u f < 0 – there is a direction in which f is decreasing and another in
+which it is increasing; f is not flat. Hence f is stationary (“flat”) at (x0 , y0 ) precisely
+when (“if and only if”) the gradient of f at (x0 , y0 ) is zero.
+
+Some stationary points are minimisers (also called minima or minimums, singular: minimum). For example, the point (x0 , y0 ) = (0, 0) is a minimiser of the function f = x2 + y 2 .
+Stationary points also include maximisers and saddles. An example of a maximiser is
+f = −(x2 + y 2 ) at the point (x0 , y0 ) = (0, 0). Similarly (x0 , y0 ) = (0, 0) is a saddle point
+of f = x2 − y 2 .
+
+EMTH210
+
+1.26
+
+51
+
+WHEN A CONSTRAINT IS PRESENT
+
+In practice we often have constraints limiting where (x, y) can be. For example, we may
+want to
+• maximise altitude while staying on a path,
+• maximise strength for a fixed cost,
+• minimise cost for a fixed strength,
+• minimise surface area to contain a fixed volume,
+• maximise efficiency for a fixed power output,
+and so on.
+We are looking for constrained maximums and constrained minimums. These are points
+satisfying the constraint where the function is flat in a particular direction (along the
+constraint curve), and we call them critical points 2 .
+We will usually call the function we are maximising or minimising f (x, y), and the constraint curve c(x, y) = 0.
+Mathematically, we define a critical point of f (x, y) satisfying the constraint c(x, y) = 0
+as a point at which Du f = 0 for all directions u tangential to the constraint – the only
+directions in which we can move if we are constrained to move along c(x, y) = 0.
+Since Du f = ∇f · û and u ̸= 0, ∇f and u are orthogonal, so ∇f is orthogonal to the
+constraint (or is zero). But assuming ∇c ̸= 0, ∇c is also orthogonal to the constraint,
+since the gradient vector of a function is always orthogonal to its level curves. That means
+∇f must be parallel to ∇c (or zero).
+In notation: ∇f = λ∇c for some λ ∈ R. Here, λ is known as a Lagrange multiplier.
+2
+
+There are several other uses of “critical point”. E.g., a point at which the gradient of a function
+
+is either zero (a stationary point) or undefined. However, we will in this course assume that all of our
+functions have well-behaved gradients.
+
+52
+
+EMTH210
+
+At constrained critical points:
+• ∇f is parallel to ∇c: ∇f = λ∇c.
+• The level curves of f (x, y) are parallel to the constraint curve c(x, y) = 0.
+Example 1.26.1
+Find the critical points of f (x, y) = y 2 − x2 on the curve c(x, y) = x2 − y − 1 = 0.
+Draw a sketch showing level curves of f , the constraint curve, and the critical points.
+Solution.
+
+EMTH210
+
+53
+
+♦
+
+54
+
+EMTH210
+
+Example 1.26.2
+Find the critical points of f = x2 + 4y 2 subject to the constraint c = x + 2y + 1 ⩾ 0
+Solution.
+This is a so-called inequality constraint, and must be tackled in two parts:
+1. Find all stationary points (∇f = 0) which satisfy c ⩾ 0.
+2. Find all the critical points of f subject to c = 0 (note the equals sign).
+
+EMTH210
+
+55
+
+♦
+
+56
+
+EMTH210
+
+Example 1.26.3
+Find the critical points of f = xy subject to the constraint c = x2 + y 2 − 2 = 0
+Solution.
+
+EMTH210
+
+57
+
+♦
+
+1.27
+
+THE LAGRANGIAN
+
+Suppose we want the critical points of the function f (x, y) subject to the constraint
+c(x, y) = 0. If we look at the Lagrangian function
+L(x, y, λ) = f (x, y) − λc(x, y),
+then any stationary point of L satisfies ∇f = λ∇c and c = 0.
+
+58
+
+EMTH210
+
+Example 1.27.1
+Use the Lagrangian function to find the critical points of f = x + y 2 subject to the
+constraint c = x2 + y 2 − 1 = 0
+Solution.
+
+EMTH210
+
+59
+
+♦
+
+1.28
+
+Two examples to try later
+
+Example 1.28.1
+Find the critical point of f = xy on x + y − 4 = 0.
+Example 1.28.2
+
+Maximise f (x, y) = xy
+
+subject to g(x, y) = 4x2 + 8y 2 − 16 = 0.
+
+
+
+
+University of Canterbury
+EMTH210
+
+ENGINEERING MATHEMATICS
+
+Topic 2: Differential equations
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike
+3.0 Unported License. To view a copy of this license, visit http://creativecommons.
+org/licenses/by-nc-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street,
+Suite 900, Mountain View, California, 94041, USA.
+
+2
+
+2.1
+
+EMTH210
+
+SECOND ORDER HOMOGENEOUS LINEAR CONSTANT
+COEFFICIENT ODEs
+
+These are things of the form:
+a2
+
+d2 y
+dy
++ a0 y = 0,
++ a1
+2
+dt
+dt
+
+where a2 , a1 and a0 are constants with a2 ̸= 0.
+Second order because
+
+.
+.
+
+Homogeneous because
+Linear because
+
+.
+
+Constant coefficient because
+
+.
+
+We saw last year that DEs like this have solutions of the form y = emt , where m is
+constant (and possibly complex). When we know the form of the solution but not its
+details (e.g. the value of m), the form is called an ansatz. So let’s try the ansatz y = emt
+in the 2nd order ODE.
+Example 2.1.1
+Solve the following DE:
+y ′′ + 3y ′ + 2y = 0.
+Solution.
+
+EMTH210
+
+3
+
+♦
+The linearity of the equation lets us take a linear combination of the two component solutions to get the general solution. So this method will not work for non-linear equations!
+
+We should check that our general solution does indeed solve the DE:
+d2 y
+dy
+d2
+d
++ 3 + 2y = 2 (C1 e−t + C2 e−2t ) + 3 (C1 e−t + C2 e−2t ) + 2(C1 e−t + C2 e−2t )
+2
+dt
+dt
+dt 
+dt 
+ 2
+
+d2 −t
+d −t
+d −2t
+d −2t
+−t
+−2t
+= C1
+e + 3 e + 2e
++ C2
+e + 3 e + 2e
+dt2
+dt
+dt2
+dt
+= C1 · 0 + C2 · 0 = 0.
+
+4
+
+EMTH210
+
+The steps for solving a second order homogeneous linear constant coefficient ODE
+a2 y ′′ + a1 y ′ + a0 y = 0
+are:
+1. Ensure the ODE is 2nd order, homogeneous, linear, constant coefficients.
+2. Create the ansatz y = emt (or y = emx , etc., depending on the variable names).
+3. Substitute the ansatz into the ODE.
+4. Obtain and solve the auxiliary equation, which will be a second order algebraic
+equation like a2 m2 + a1 m + a0 = 0, to get two values m1 , m2 .
+5. Write
+
+down
+
+the
+
+general
+
+solution
+
+of
+
+the
+
+ODE,
+
+which
+
+is
+
+one
+
+of:
+
+•
+
+y(t) = C1 em1 t + C2 em2 t
+
+(distinct real roots m1 ̸= m2 )
+
+•
+
+y(t) = C1 t em1 t + C2 em1 t
+
+(repeated roots m1 = m2 )
+
+•
+
+y(t) = eat (C1 cos bt + C2 sin bt)
+
+(complex conjugate pair of roots m2 = m1 ,
+where a = Re(m1 ) and b = Im(m1 ),
+so m1 = a + i b and m2 = a − i b)
+
+where C1 , C2 are arbitrary real constants.
+6. If you have any extra information (initial or boundary conditions, say) then use
+these to find the constants C1 , C2 .
+
+Using the discriminant, you can look at a second order homogeneous linear constant coefficient ODE and quickly say something about how the solutions will behave before you
+solve the ODE. This can be tremendously useful.
+
+Note that the solution of a second order has two unknowns which can be found with two
+conditions. If the conditions are given at the start, this is called an initial value problem,
+or IVP.
+
+EMTH210
+
+5
+
+Example 2.1.2
+Find C1 and C2 for the previous example if the initial conditions are
+y(0) = 1,
+
+y ′ (0) = 3.
+
+Solution.
+
+♦
+The power of this method of solution lies in reducing the problem of solving an ODE to the
+problem of solving an algebraic equation, namely the auxiliary equation am2 +bm+c = 0.
+Recall that when the discriminant b2 − 4ac of this quadratic equation is positive, zero, or
+negative, we get two distinct real roots, one repeated real root, or two complex conjugate
+roots, respectively.
+
+6
+
+EMTH210
+
+Example 2.1.3
+Solve
+y ′′ + 6y ′ + 13y = 0.
+Solution.
+
+♦
+
+EMTH210
+
+7
+
+Two comments.
+1. The general solution is real. Here, that link between complex numbers and trigonometric functions becomes essential to a very real application. Of course a physical
+situation modelled by this ODE would have to have real, not complex, solutions.
+So even though the method involves complex numbers, the solution is real.
+2. From now on do not go through the rigmarole of Euler’s formula etc. — just take
+the shortcut and go directly from m = −3 ± 2i to
+y = e−3t [C1 cos (2t) + C2 sin (2t)] .
+At this point, we can glance at the coefficients of an ODE, imagine they were the coefficients of the auxiliary equation, and if the discriminant thereof is positive we can predict
+that the solution will involve exponential growth, decay, or a combination of the two,
+while if the discriminant is negative we can predict the existence of cyclic solutions (combinations of sines and cosines). Next, we see what happens when the discriminant is
+zero.
+
+2.2
+
+REPEATED ROOTS
+
+This is what we call the situation when the discriminant of the auxiliary equation is zero,
+as in this example:
+y ′′ + 2y ′ + y = 0.
+As usual, we put y = emt , and obtain the auxiliary equation
+m2 + 2m + 1 = 0
+(m + 1)2 = 0
+so m = −1, −1. This gives only ONE linearly independent component solution y1 = e−t .
+But we expect a second component solution as the ODE is second order. The general rule
+for repeated roots is that if y1 = em1 t is the first component solution then the second
+
+8
+
+EMTH210
+
+component solution is simply y2 = tem1 t , that is, t times the first solution. For the current example, we can see that this works:
+y2 (t) = te−t ,
+=⇒ y2′ (t) = (1)e−t + t(−e−t ) = (1 − t)e−t
+=⇒ y2′′ (t) = (−1)e−t + (1 − t)(−e−t ) = (−2 + t)e−t ,
+and so
+y2′′ + 2y2′ + y2 = (−2 + t)e−t + 2(1 − t)e−t + te−t = 0.
+So as y2 satisfies the original DE we know that this is the second solution. Therefore the
+general solution for this example is
+y = C1 e−t + C2 te−t ,
+where C1 and C2 are arbitrary constants.
+In general, (i.e. for higher roots), if a root m = λ occurs k times then a DE has k linearly
+independent component solutions,
+eλt , teλt , t2 eλt , . . . , tk−1 eλt ,
+plus solutions from any other roots.
+We have now seen the three types of solution possible for second order homogeneous linear
+constant coefficient ODEs, and how they occur depending on the roots of the auxiliary
+equation. We now move on to finding values of the constants C1 , C2 depending on extra
+information with which we may be supplied.
+
+EMTH210
+
+2.3
+
+9
+
+BOUNDARY VALUE PROBLEMS (BVPs)
+
+These differ from initial value problems in that the extra information involves more than
+one location (usually position x, rather than time t).
+Example 2.3.1
+Solve the boundary value problem:
+y ′′ + ω 2 y = 0
+y(0) = 0 and y(L) = 0 (L ̸= 0)
+Solution.
+
+10
+
+EMTH210
+
+♦
+There is another possibility that can occur with different boundary conditions, as we see
+in the next example.
+
+EMTH210
+
+11
+
+Example 2.3.2
+As before,
+y ′′ + ω 2 y = 0,
+but now
+y(0) = 0
+
+and
+
+y(L) = 1,
+
+L ̸= 0
+
+Solve the new boundary value problem.
+Solution.
+
+♦
+So in both examples, we needed to think about the zeroes of the function sin(x). In
+the first example, this was to identify the two possible situations: the trivial solution,
+or an infinite family of (non-trivial) solutions. In the second example, the two possible
+situations were: a unique solution, or no solutions. In both cases, the number and type
+of solution depends on the value of ωL. You should think about what this means.
+
+In contrast, and you should check this, an initial value problem y ′′ + ω 2 y = 0 with
+y(t0 ) = y0 and y ′ (t0 ) = y0′ always has a unique solution.
+
+12
+
+EMTH210
+
+2.4
+
+APPLICATION: BUCKLING OF A THIN BEAM
+
+Sketch of the situation:
+
+This is not a time-dependent problem, but rather y = y(x) where y is the downwards
+displacement of the beam at horizontal position x. The beam is pinned freely at the ends,
+so that y(0) = y(L) = 0 but y ′ (0) and y ′ (L) are free. The beam is under compression by
+a force P .
+
+The governing equation and boundary conditions of the beam are
+P
+d2 y
++
+y=0 ,
+2
+dx
+EI
+
+y(0) = y(L) = 0,
+
+where E is Young’s modulus and I is the second moment of the cross-sectional area of
+the beam1 .
+
+This has general solution
+
+1
+
+The derivation is as follows. If M (x) is the moment on the left-hand part of the beam exerted by
+
+the right-hand part of the beam at a point C, then taking moments about C gives
+P y(x) + M (x) = 0.
+For small displacements
+M (x) = EI
+
+d2 y
+.
+dx2
+
+Substituting the latter into the former gives the governing equation.
+
+EMTH210
+
+13
+
+Then the boundary conditions give:
+
+so that either C2 = 0, in which case we have the trivial solution y = 0 (beam stays
+straight), or kL = nπ for some integer n, in which case we have the solution
+ nπx 
+,
+y = C2 sin
+L
+where C2 is arbitrary. In particular, C2 can be arbitrarily large — the beam buckles.
+
+We may now wish to ask under which conditions the beam will buckle. Well,
+
+Hence the beam buckles for these values of P , which are known as critical loads. Note that
+these are steady-state results, not dynamic, so some care is required when interpreting
+these results. The smallest force P to cause buckling is
+
+which is the so-called “Euler load”.
+
+2
+
+Good old Euler; just look at that hat.
+2
+
+Portrait by Jakob Emanuel Handmann (1718-1781). File downloaded from commons.wikimedia.org,
+
+Public Domain.
+
+14
+
+EMTH210
+
+2.5
+
+INHOMOGENEOUS LINEAR ODEs
+
+Motivating problem: describe mathematically the motion of a weight on a spring.
+
+spring force −ky
+
+direction of positive y
+
+y = y0
+
+(initial position)
+
+y = ye
+
+(equil’m position)
+
+F
+
+m
+
+gravitational force −gm
+
+From laws of physics
+m y ′′ = Ftotal = Fgravity + Fspring + Fdamping = −g m − k y − ρy ′ .
+The DE is then
+dy
+d2 y
++p
++ q y = −g,
+2
+dt
+dt
+ρ
+k
+−mg
+and q = . A particular solution is yp = ye =
+, the equilibrium
+m
+m
+k
+displacement for the spring mass system.
+where p =
+
+We could also add other external forces to the right-hand side (which can depend on t).
+
+Mathematical problem: how do we solve this differential equation?
+
+In general, inhomogeneous linear second-order DEs with constant coefficients are DEs of
+the form
+ay ′′ + by ′ + cy = f (t),
+where you will note that the right-hand side (RHS) can now be non-zero.
+
+(1)
+
+EMTH210
+
+15
+
+The inhomogeneous linear ODE (1) has a general solution y(t) = yp (t) + yc (t) where yp (t)
+is any solution to (1) and yc (t) is the general solution to
+a2 y ′′ + a1 y ′ + a0 y = 0.
+This works because
+a2 (yp′′ + yc′′ ) + a1 (yp′ + yc′ ) + a0 (yp + yc ) = a2 yp′′ + a1 yp′ + a0 yp + a2 yc′′ + a1 yc′ + a0 yc = f (t).
+{z
+}
+|
+{z
+} |
+f (t)
+
+0
+
+Terminology:
+• yp (t) is called the particular integral (PI);
+• yc (t) is called the complementary function (CF).
+(Also called yh (t), the homogeneous solution.)
+The general strategy for solving an inhomogeneous linear ODE is
+
+1. Set the RHS equal to zero, and solve the resulting homogeneous
+ODE (by the methods we have learned) to find the complementary
+function yc (t).
+2. Find any solution to the full inhomogeneous equation (by the methods to be outlined below) — this is the particular integral yp (t).
+3. The general solution is y(t) = yp (t) + yc (t).
+
+16
+
+EMTH210
+
+Before discussing the general method for finding yp in §2.6, let’s see the ideas in action.
+Example 2.5.1
+Find the general solution of
+y ′′ + 3y ′ + 2y = 4t + 8.
+Solution.
+
+♦
+This method of “guessing” the form of the RHS but with unknown constant is known as
+the method of undetermined coefficients, because the method involves coefficients (A and
+B in the previous example) which are undetermined3
+3
+
+And because “big fat guess” doesn’t sound impressive enough.
+
+EMTH210
+
+2.6
+
+17
+
+BASIC STRATEGY FOR “GUESSING” FORM OF yp —
+THE METHOD OF UNDETERMINED COEFFICIENTS
+
+The following four rules systematically generate every possible term that could come from
+the RHS and its derivatives, all with (to start with) undetermined coefficients. The form
+of the yp generated by the four rules is the ansatz for yp , which has the coefficients determined.
+Follow the four rules carefully and in order and you won’t go wrong. When we say “in
+order” we really mean it: do not apply rule 3, then rule 4, then go back to rule 2. Do 1,
+then 2, then 3, then 4, and never look back.
+
+1. Use undetermined coefficients
+Set yp to the RHS, with the coefficients replaced by undetermined coefficients A, B, etc.
+E.g. 7x2 + sin(2x) + xe3x −→ Ax2 + B sin(2x) + Cxe3x .
+2. Fill in lower powers
+Fill in lower polynomial powers all the way to constants.
+E.g. Ax2 + Cxe3x −→ Ax2 + Bx + C + Dxe3x + Ee3x .
+3. Match sin and cos
+Put in matching sin terms for every cos, and vice versa.
+E.g. A sin(2x) + Bex cos(3x)
+−→ A sin(2x) + B cos(2x) + Cex sin(3x) + Dex cos(3x).
+4. Prevent linearly dependent (overlapping) terms
+For terms which are linearly dependent on other terms in yc or yp , multiply
+them by x until they are linearly independent.
+E.g. if yc = C1 ex + C2 e−x , Axex + Bex −→ Axex + Bx2 ex .
+The form must make it impossible for terms of yp to combine with each
+other or with terms in yc when we add them with y = yp + yc .
+Always explicitly label the relevant steps “Rule 1” and so on.
+
+18
+
+EMTH210
+
+Example 2.6.1
+Find the corresponding homogeneous solutions and the form of yp for the following DEs.
+(a) y ′′ + 7y ′ − 8y = 7e−x
+
+(b) y ′′ + 7y ′ − 8y = 7ex
+
+(c) y ′′ + 4y ′ + 4y = ex sin x
+
+(d) y ′′ + 4y ′ + 4y = 4 x2 e−2x
+
+(e) y ′′ + y = ex sin x
+
+(f) y ′′ + y = sin x
+
+EMTH210
+
+2.7
+
+19
+
+FORCED OSCILLATIONS
+
+Interesting scenarios result when the system is subject to external forcing: for example, a
+mechanical actuator could lift and drop the top of the attachment point of a spring to the
+ceiling. This force can be inserted as a RHS to the equation, making it non-homogeneous:
+dy
+d2 y
++ q y(t) = f (t).
++p
+2
+dt
+dt
+A simple scenario (in the absence of damping) is the presence of a sinsusoidal forcing
+term, which induces interesting behaviour.
+When the forcing frequency is equal to the natural frequency of a freely oscillating system,
+resonance occurs and the amplitude grows (without bound in these simple models; the
+real world obviously limits growth).
+When the forcing frequency is close to the natural frequency of a freely oscillating system,
+interesting patterns can emerge (beats).
+Example 2.7.1
+Solve the initial value problem
+y ′′ + 64 y = −17 cos 9t ;
+Solution.
+
+y(0) = 0, y ′ (0) = 0 .
+
+20
+
+EMTH210
+
+♦
+y(t)
+
+t
+
+If in doubt about applying the method of undetermined coefficients, it is safer to include
+extra terms. If these terms are not needed the method will automatically set their unknown coefficients to zero except for terms which overlap with yc ; the coefficients of these
+terms will be arbitrary. On the other hand if necessary terms are omitted then the method
+will almost always fail.
+
+EMTH210
+
+21
+
+Now we look at an example with resonance:
+Example 2.7.2
+Solve the initial value problem
+y ′′ + 64 y = −16 sin 8t,
+Solution.
+
+with y(0) = 0, y ′ (0) = 1 .
+
+22
+
+EMTH210
+
+♦
+y(t)
+
+t
+
+EMTH210
+
+2.8
+
+23
+
+MORE EXAMPLES
+
+Example 2.8.1
+Find the general solution of
+y ′′ − 2y ′ + y = t2 et + 5.
+Solution.
+
+24
+
+EMTH210
+
+♦
+
+EMTH210
+
+25
+
+Example 2.8.2
+Find the general solution of
+y ′′ + y = et sin (t).
+Solution.
+
+26
+
+EMTH210
+
+♦
+
+EMTH210
+
+27
+
+Example 2.8.3
+Find the general solution of
+y ′′ − y = tet .
+Solution.
+
+28
+
+EMTH210
+
+♦
+
+EMTH210
+
+29
+
+Example 2.8.4
+Find the general solution of
+y ′′ + y = sin (t) + 3te−t .
+Solution.
+
+30
+
+EMTH210
+
+♦
+
+EMTH210
+
+31
+
+Example 2.8.5
+Find the general solution of
+d3 y dy
+= t2 + e2t .
++
+3
+dt
+dt
+Solution.
+
+32
+
+EMTH210
+
+♦
+Note: the method of undetermined coefficients only really works for constant coefficient
+DEs when the RHS of f (t) consists of terms with are polynomial, exponential, sine, cosine,
+or products thereof.
+
+
+
+
+University of Canterbury
+EMTH210
+
+ENGINEERING MATHEMATICS
+
+Topic 3: Fourier series
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike
+3.0 Unported License. To view a copy of this license, visit http://creativecommons.
+org/licenses/by-nc-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street,
+Suite 900, Mountain View, California, 94041, USA.
+
+2
+
+EMTH210
+
+3.1
+
+FOURIER SERIES
+
+A 2π-periodic function f (x) can have a Fourier Series (F.S.) associated with it:
+∞
+
+a0 X 
++
+an cos(nx) + bn sin(nx) ,
+2
+n=1
+∞
+where the coefficients a0 , {an }∞
+n=1 , {bn }n=1 depend in some way on f (x) (for a preview,
+
+check out the box on page 4). The important point is that for a “nice” function, its
+associated Fourier series is actually equal to the function itself, so we can write:
+∞
+
+a0 X 
++
+an cos(nx) + bn sin(nx) .
+f (x) =
+2
+n=1
+
+When we encounter an inhomogeneous ODE with a RHS which we can’t tackle by the
+method of undetermined coefficients, we will use the FS to rewrite the RHS in terms of
+sines and cosines, which can be tackled with the method of undetermined coefficients.
+There are many other uses of FS, which in turn is just one part of the wider subject
+of Fourier analysis. Joseph Fourier1 (1768–1830) invented FS in order to solve the heat
+equation in a metal plate.
+
+It might be that only a finite number of the coefficients an and bn are non-zero, in which
+case we have a finite Fourier series. On the other hand, it may be that an infinite number
+of the coefficients are non-zero.
+
+Note that because sin(nx) and cos(nx) are 2π-periodic, (or rather 2π is the shortest period common to all), the FS is also 2π periodic.
+
+1
+
+Interesting chap. An important part of the French Revolution, later chummy with Napoleon Bona-
+
+parte. Discovered the greenhouse effect. Was keen on heat flow (Fourier’s law) and vibrations (Fourier
+analysis) in general: ironically, tripped on the blanket he was wearing to keep warm and died after falling
+down the stairs.
+
+EMTH210
+
+3
+
+An example of a Fourier series is that if f (x) = x on −π < x < π then
+f (x) =
+ie a0 =
+
+, an =
+
+∞
+X
+2
+
+n
+n=1
+
+(−1)n+1 sin(nx),
+
+for all n, and bn =
+
+for all n.
+
+For the idea of Fourier series to be useful, we need to know how to get an and bn . We do
+so by use of the orthogonality property of the set S of functions
+S = {1, sin(x), cos(x), sin(2x), cos(2x), . . . },
+which is that
+
+for any two different functions ϕ1 (x) and ϕ2 (x) in S.
+This can be a very useful shortcut.
+Example 3.1.1
+Show that the orthogonality property holds for the pair of functions ϕ1 (x) = sin(nx), ϕ2 (x) =
+sin(kx) where k and n are natural numbers, and k ̸= n.
+Solution.
+
+♦
+
+4
+
+EMTH210
+
+Now, when ϕ1 (x) = ϕ2 (x) we get either
+Z π
+
+sin2 (kx) dx = π
+
+or
+
+Z −π
+π
+
+cos2 (kx) dx = π or
+−π
+Z π
+12 dx = 2π.
+−π
+
+We use orthogonality and these last three properties to get the FS coefficients.
+
+∞
+
+a0 X 
+f (x) =
++
+an cos(nx) + bn sin(nx) ,
+2
+n=1
+
+where
+Z
+1 π
+a0 =
+f (x) dx
+π −π
+Z
+1 π
+an =
+f (x) cos(nx) dx
+π −π
+Z
+1 π
+bn =
+f (x) sin(nx) dx.
+π −π
+Note that some books omit the 1/2 from the a0 /2 term, in which case the factor in front
+of the a0 integral becomes 1/2π. Either way, you get the same series, of course. But it is
+best to stick with one definition, and we will use the one in the box.
+
+The above concerns functions on the symmetric interval (−π, π). Later, we will generalise
+to any interval, at which point our definition of the FS and its coefficients will change.
+The general version is the one on the formula sheet.
+
+EMTH210
+
+5
+
+Example 3.1.2
+Derive the formula for bn by considering
+
+Rπ
+−π
+
+f (x) sin(nx) dx.
+
+Solution.
+
+♦
+The other derivations are similar.
+
+6
+
+3.2
+
+EMTH210
+
+ODD AND EVEN FUNCTIONS
+
+A function is odd if it satisfies f (−x) = −f (x). E.g. x, x3 , x5 , x7 , sin x, tan x, sinh x.
+A function is even if it satisfies f (−x) = f (x). E.g. 1, x2 , x4 , x6 , cos x, cosh x, |x|.
+They satisfy the following multiplication and addition properties.
+odd × odd = even,
+
+odd × even = odd,
+
+and
+
+even × even = even
+
+odd + odd = odd,
+
+odd + even = neither,
+
+and
+
+even + even = even
+
+ODD FUNCTIONS
+For an odd function f (x),
+Z π
+
+1
+a0 =
+π
+
+f (x) dx = 0,
+−π
+
+since the interval is symmetric about 0. f (x) cos(nx) is odd, so
+1
+an =
+π
+
+Z π
+f (x) cos(nx) dx = 0,
+−π
+
+for all n, but f (x) sin(nx) is even, so
+2
+bn =
+π
+
+Z π
+f (x) sin(nx) dx,
+0
+
+for all n.
+EVEN FUNCTIONS
+For an even function f (x),
+Z
+2 π
+a0 =
+f (x) dx
+π 0
+Z
+2 π
+an =
+f (x) cos(nx) dx,
+π 0
+for all n, as f (x) cos(nx) is even, but f (x) sin(nx) is odd so
+1
+bn =
+π
+for all n.
+
+Z π
+f (x) sin(nx) dx = 0
+−π
+
+EMTH210
+
+7
+
+Example 3.2.1
+Find the Fourier series of
+f (x) = x on −π < x < π,
+with f (x + 2π) = f (x).
+Solution.
+
+♦
+
+8
+
+EMTH210
+
+Example 3.2.2
+Find the Fourier series of the following function:
+
+
+−1
+if −π ≤ x < 0
+f (x) =
+
+ 1
+if 0 ≤ x < π,
+
+with f (x + 2π) = f (x).
+
+y
+1
+−π
+
+Solution.
+
+π x
+−1
+
+EMTH210
+
+9
+
+♦
+If we were also asked to sketch the FS, we would draw something like this:
+f (x)
+1
+−3π
+
+3.3
+
+−2π
+
+π
+
+−π
+
+2π
+
+−1
+
+3π x
+
+GIBBS’S PHENOMENON
+
+We have already seen that the function
+
+
+−1
+−π ≤ x < 0
+f (x) =
+
+ 1
+0≤x<π
+
+has FS
+
+∞
+X
+4
+f (x) =
+sin(nx).
+nπ
+n=1
+n odd
+
+If we include only the first N terms as an approximation to f (x) we get erroneous oscillations close to corners of the square wave. Here are the first 20 terms:
+y
+1
+−3π
+
+−2π
+
+−π
+
+π
+
+0π
+
+2π
+
+3π x
+
+−1
+
+If the file is played as sound (or if the phenomenon is a naturally aural one) then these
+oscillations make a ringing sound. This phenomenon is named not after its discoverer
+(typical), but rather its populariser, JW Gibbs. The maximum height of the oscillations
+near the jump discontinuities do not go to zero as N → ∞. This causes all manner of
+problems in signal processing, for example in MRI scans.
+
+10
+
+EMTH210
+
+3.4
+
+FUNDAMENTAL HARMONICS
+
+Consider the following finite FS:
+f (x) = 4 + sin(x) + 12 sin(2x) + 35 sin(5x).
+The ‘4’ is the constant term which is the average value of f (x) over one period . The
+shortest period common to all terms is 2π. The fundamental frequency is 1/(shortest period) .
+Here,
+fundamental frequency =
+
+1
+.
+2π
+
+• The sin(x) term is the fundamental frequency term 2 , because its frequency (the
+inverse of its period) is equal to the fundamental frequency.
+• The 12 sin(2x) term is the 2nd harmonic 3 , because its frequency is twice the fundamental frequency (so not just because there is a ‘2’ in there).
+• The 35 sin(5x) term is the 5th harmonic 4 , because its frequency is five times the
+fundamental frequency.
+In the above example, the FS is missing some harmonics, namely the
+and everything above the
+
+,
+
+. Likewise, a FS may also miss a fundamental term,
+
+although it will always have a fundamental frequency, as in the following example.
+
+2
+
+Musicians among you may know this as the fundamental tone.
+Musicians: 1st overtone.
+4
+Musicians: 4th overtone.
+3
+
+,
+
+EMTH210
+
+11
+
+Example 3.4.1
+Find the fundamental frequency and identify the harmonic terms of the FS
+f (x) = 4 + sin(2x) + cos(3x).
+Solution.
+
+♦
+
+12
+
+3.5
+
+EMTH210
+
+ANOTHER EXAMPLE
+
+Example 3.5.1
+Find the Fourier series of the function
+f (x) = π − |x|
+with f (x + 2π) = f (x).
+Solution.
+
+−π < x < π,
+
+EMTH210
+
+13
+
+♦
+
+3.6
+
+NOT A FOURIER SERIES
+
+Example 3.6.1
+Why is the following not a FS?
+f (x) = cos(x) +
+
+√
+√
+1
+1
+1
+cos( 2x) + cos(2x) + cos( 8x) + . . .
+2
+4
+8
+
+Solution.
+
+♦
+
+14
+
+3.7
+
+EMTH210
+
+F.S. IN UNDETERMINED COEFFICIENTS
+
+The main use of FS in this course will be to rewrite unusual right hand sides of ODEs in
+terms of sines and cosines, which we know how to deal with in the method of undetermined
+coefficients. Here is an illustrative example.
+Example 3.7.1
+A mass m = 1kg is suspended on a spring which hangs vertically. The spring obeys
+Hooke’s law with a spring constant k whose square root is not a natural number. Let
+t be time and y be the displacement of the mass from the equilibrium position, where
+downwards is positive, and is the direction in which gravity acts. The mass-spring system
+is subject to forcing from the force f (t). Find the position of the mass at all positive
+times when the forcing takes the form
+f (t)
+2
+
+π
+and continues in this way for all positive times.
+Solution.
+
+2π
+
+3π
+
+t
+
+EMTH210
+
+15
+
+16
+
+EMTH210
+
+♦
+
+EMTH210
+
+3.8
+
+17
+
+GENERALISATION TO ARBITRARY PERIOD p
+
+The following is very important, because we generalise what we have learned about FS of
+2π-periodic functions to enable us to find the FS of a p-periodic function5 .
+So let us take a 2π-periodic function which we have already studied, namely
+−π <x<π
+
+f (x) = x on
+which has Fourier series f (x) =
+
+∞
+X
+2
+
+n
+n=1
+
+with f (x) = f (x + 2π).
+
+(−1)n+1 sin(nx).
+
+Now suppose that in both the original definition and the FS, we put x = 2πt/p, where p
+is some non-zero number, and t is a variable:
+
+
+2πt
+= g(t) say.
+f (x) = f
+p
+Now our new function g(t) has period p. The Fourier series for g(t) is simply
+
+
+∞
+X
+2nπt
+2
+n+1
+(−1)
+sin
+g(t) =
+,
+n
+p
+n=1
+after making the substitution. Graphically, we have gone from
+π
+
+−3π
+
+−2π
+
+f (x)
+
+π
+
+−π
+
+x
+3π
+
+2π
+
+−π
+to
+π
+
+− 3p
+2
+5
+
+−p
+
+− p2
+
+g(t)
+
+p
+2
+
+p
+
+3p t
+2
+
+−π
+
+What we don’t get into here, but which is nevertheless important, is that almost any function can be
+
+thought of as p-periodic for some p, if you truncate it, focus on only a certain range of interest, or chop
+it into suitable pieces.
+
+18
+
+EMTH210
+We can generalise the definition of Fourier series to work with any periodic function f (x) of period p:
+
+
+
+
+∞ 
+X
+1
+2nπx
+2nπx
+f (x) = a0 +
+an cos
++ bn sin
+2
+p
+p
+n=1
+where
+Z
+2
+a0 =
+f (x) dx
+p one period
+
+
+Z
+2
+2nπx
+an =
+dx
+f (x) cos
+p one period
+p
+
+
+Z
+2
+2nπx
+bn =
+f (x) sin
+dx
+p one period
+p
+Note that we do not have to integrate from −p/2 to p/2. It is sufficient
+to integrate over any interval [A, A + p], for some convenient A.
+
+The above can by proved by orthogonality on the set
+
+
+
+1, sin
+
+
+
+
+
+2nπx
+2nπx
+, cos
+,... .
+p
+p
+
+If we set p = 2π then we retrieve exactly the definition we have been working with.
+You are much more likely to be tested on the general form of the FS than the FS of a
+2π-periodic function. Also, it is this general form which appears on the formula sheet.
+
+EMTH210
+
+19
+
+Example 3.8.1
+Find the FS of the function
+
+f (x) =
+
+
+
+
+
+
+0
+
+
+
+sin(πx)
+Solution.
+
+−1 ≤ x < 0
+0 ≤ x < 1.
+
+20
+
+EMTH210
+
+♦
+
+
+
+
+
+
+University of Canterbury
+EMTH210
+
+ENGINEERING MATHEMATICS
+
+Topic 4: Eigen problems
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike
+3.0 Unported License. To view a copy of this license, visit http://creativecommons.
+org/licenses/by-nc-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street,
+Suite 900, Mountain View, California, 94041, USA.
+
+2
+
+4.1
+
+EMTH210
+
+REVIEW OF FINDING DETERMINANTS
+
+This section on cofactor expansion should all be revision for you. The determinant |A| of
+an n × n matrix A can be defined recursively by
+det(A) = |A| =
+
+n
+X
+
+aij (−1)i+j |Mij |
+
+for any fixed j, or
+
+aij (−1)i+j |Mij |
+
+for any fixed i,
+
+i=1
+
+=
+
+n
+X
+j=1
+
+(i.e. we can calculate along rows or columns) where aij is the element of A in row i and
+column j
+
+
+
+a1n
+
+a2n 
+.. 
+,
+. 
+
+an1
+
+ann
+
+a11 a12 . . .
+
+ a21 a22 . . .
+A=
+..
+ ..
+.
+ .
+
+and where (−1)i+j is the so-called “checkerboard” sign
+
+1
+i 2
+3
+4
+
+1
++
+−
++
+−
+
+j
+2
+−
++
+−
++
+
+3 4
++ −
+− +
++ −
+− +
+
+and where Mij is the ij th minor of A, that is A with the ith row and j th column deleted,
+such that for example
+
+
+
+
+a11 a12 a13
+
+
+A = a21 a22 a23 
+a31 a32 a33
+
+−→
+
+
+
+"
+#
+... ... ...
+
+
+a
+a
+.
+21
+23
+.
+
+M12 = 
+.
+a21 . a23  = a
+31 a33
+..
+a31 . a33
+
+So |A| = sum along any row or column, element by element, of “checkerboard sign ×
+element × element’s determinant of element’s minor”. This method is called “cofactor
+expansion”.
+
+EMTH210
+
+3
+
+Example 4.1.1
+Find the determinant of
+
+"
+
+#
+a b
+A=
+.
+c d
+
+Solution.
+
+♦
+
+Example 4.1.2
+Find the determinant of
+
+1
+0
+
+A=
+0
+1
+
+0
+1
+2
+0
+
+3
+0
+1
+0
+
+
+0
+1
+
+.
+2
+3
+
+Solution.
+
+♦
+
+4
+
+EMTH210
+
+4.2
+
+EIGENVALUES and EIGENVECTORS
+
+Ax transforms x to another vector, which could be longer or shorter, and could be in
+a different direction. The eigenvectors of A are the vectors whose direction is preserved
+under this transformation.
+The eigenvectors of a square matrix A are the non-zero vectors v that remain proportional
+to v when they are multiplied by A. In other words, they are the v ̸= 0 for which
+Av = λv
+
+(1)
+
+where λ, a scalar, is called the eigenvalue associated with the eigenvector v.
+You will note that the eigenvectors and eigenvalues “belong” to the square matrix A – we
+speak of “the eigenvalues and eigenvectors of A”. The German word for “characteristic”
+or “own” is “eigen”.
+In (1) both λ and v are unknowns. Finding these unknowns for a given matrix A is
+called solving an eigen problem1 . Other non-matrix problems in which the unknowns also
+depend on an unknown parameter are sometimes referred to as eigenproblems.
+Example 4.2.1 " #
+1
+Show that v =
+is an eigenvector of the following matrix, and find its associated
+1
+eigenvalue:
+"
+#
+1 4
+A=
+.
+3 2
+Solution.
+
+♦
+1
+
+Or eigenvalue problem, etc.
+
+EMTH210
+
+5
+
+So we see that by definition an eigenvector v of a matrix A is a vector whose direction is
+unchanged by the transformation A; it is only stretched or compressed, and the eigenvalue
+gives the stretch.
+The general method to solve Av = λv for v and λ is as follows.
+Av = λv ⇐⇒ Av − λv = (A − λI)v = 0,
+where I is the identity matrix. Now we have already said that v ̸= 0. Imagine that our
+new matrix A − λI had an inverse, call it B. Then if we multiplied both sides of our
+equation by B (on the left) then on the LHS we would get B(A − λI)v = v while on
+the RHS we would get B0 = 0. Since the LHS equals the RHS this tells us that v = 0,
+which we know it can’t be. So we have found that if (A − λI) has an inverse then we get
+a contradiction. Therefore (A − λI) can’t have an inverse – it must be singular. Recall
+that a singular matrix is one whose determinant is zero. Hence the strategy to find the
+eigenvalues and eigenvectors of A is
+
+1. Solve det (A − λI) = 0 for the eigenvalues λ.
+2. Then solve (A − λI)v = 0 for the eigenvectors v.
+
+Example 4.2.2
+Find the eigenvalues and eigenvectors of
+"
+
+#
+1 4
+A=
+.
+3 2
+Solution.
+
+6
+
+EMTH210
+
+♦
+
+EMTH210
+
+7
+
+Eigenvalues and eigenvectors are a crucial part of engineering mathematics. Over the
+next few lectures, we will see them applied to solving systems of differential equations,
+and to describing the strain of materials placed under shear stress.
+Example 4.2.3
+Find the eigenvalues and eigenvectors of the following matrix:
+"
+#
+2 1
+A=
+.
+1 2
+Solution.
+
+8
+
+EMTH210
+
+♦
+
+4.3
+
+TWO POINTS
+
+Firstly, while there is no room for argument about the eigenvalues of a given matrix,
+eigenvectors are only unique in terms of their direction. This is maybe clear from the
+definitions, but also note that if {v; λ} is an eigen pair then so is {kv; λ} for any non-zero
+constant k as
+A(kv) =
+
+.
+
+The second point is that eigenvalues need not be real, and they can be complex even when
+A is real. If they are complex then they occur in complex conjugate pairs. Consider the
+following example.
+
+EMTH210
+
+9
+
+Example 4.3.1
+Find the eigenvalues and eigenvectors of the following matrix:
+"
+#
+0 −1
+A=
+.
+1
+0
+Solution.
+
+♦
+
+10
+
+4.4
+
+EMTH210
+
+SYSTEMS OF 1st ORDER ODEs
+
+Suppose that the concentration y1 , y2 of two reacting chemicals is given by the pair of
+equations
+dy1
+= y1 − 2y2
+dt
+dy2
+ẏ2 =
+= −3y1 .
+dt
+ẏ1 =
+
+A more compact "form
+# of writing these equations would be"as a matrix
+# product, by defining
+y1
+1 −2
+the vector y =
+, and the coefficient matrix A =
+. In this way, we can
+y2
+−3
+0
+replace the above pair of equations with the single matrix equation
+ẏ =
+
+dy
+= Ay.
+dt
+
+Generalising, suppose that we have N variables y1 , y2 , . . . , yN whose rate of change with
+time depends on some linear combination of these variables. Let y = (y1 , y2 , . . . , yN ) and
+write the system of N first order linear ODEs as a single matrix DE, namely
+dy
+= Ay.
+dt
+
+(2)
+
+Because this is a system of linear DEs, linear combinations of solutions will also be
+solutions, much like our solutions of single second order DEs. With the second order
+DEs, our solutions mostly had the form emt (where m may be complex), and constantcoefficients linear DEs of other orders have solutions of that form too. This motivates
+investigating an ansatz y = veλt , for some scalar λ and vector v. In fact, what we are
+doing with this vector equation is taking all of the individual ansatzes, yi = vi eλt for i = 1
+to N , and putting them into a vector. Now ẏ = Ay becomes λveλt = Aveλt . As eλt ̸= 0
+for any value of t or λ, we must have λv = Av.
+In other words, y = veλt is a solution to (2) if λ is an eigenvalue of A and v is a
+corresponding eigenvector:
+y = veλt =⇒
+so the DE (2) is satisfied.
+
+dy
+= vλeλt = λveλt = Aveλt = Ay,
+dt
+
+EMTH210
+
+11
+The solution of our system of ODEs requires the eigenvalues λi
+and the associated eigenvectors vi of the matrix of coefficients A.
+Because of the linearity of (2) its general solution is
+y=
+
+N
+X
+
+ci v i e λ i t ,
+
+i=1
+
+where the ci are constants.
+Example 4.4.1
+Find the general solution of
+
+
+ 
+4
+0 −1
+3
+d
+
+
+ 
+y = 3
+1 −1 y with initial conditions y(0) = 2 .
+dt
+2
+0
+1
+1
+Solution.
+
+12
+
+EMTH210
+
+EMTH210
+
+13
+
+♦
+You should give some thought to what this means. How do each of the variables behave?
+What have we actually done?
+
+14
+
+4.5
+
+EMTH210
+
+EXTENSION TO 2nd ORDER PROBLEMS
+
+The extension is quite straightforward, but there are a few subtleties in the method which
+we develop through the following example. You should put a box around the key points,
+as there is no summary to follow.
+Example 4.5.1
+Consider a system of three identical Hookean springs with spring constant k, and two
+identical masses of mass m, with m/k = 1, connected as follows. The first spring is
+connected to a fixed point on the left, the first mass is connected to the right end of
+the first spring, the second spring to the right of the mass, the second mass to the right
+end of the second spring, and the third spring to the right of the second mass and to a
+fixed point on the right. The masses are sitting on a frictionless horizontal surface; the
+displacements from equilibrium of the two masses are y1 and y2 , and are positive to the
+right. Find the displacements at any positive time t.
+Solution.
+
+EMTH210
+
+15
+
+16
+
+EMTH210
+
+♦
+Let us interpret our result. The system has two modes of oscillation, which may occur
+together or separately (depending on the values of the arbitrary constants), as follows.
+" #
+1
+1. When σ 2 = λ1 = −1, the eigenvector
+means that both masses have the same
+1
+, with frequency
+.
+displacement, i.e. they
+" #
+1
+2. When σ 2 = λ2 = −3, the eigenvector
+means that the two masses have equal
+−1
+but opposite displacements, in other words their movements are 180◦ out of phase.
+This mode has a higher frequency of
+
+.
+
+Since the initial conditions give the values of a1 , a2 , b1 , b2 , we should be able to start the
+experiment in such a way that we see either pure in-phase motion (a2 = b2 = 0), pure
+anti-phase motion (a1 = b1 = 0), or some combination thereof.
+
+EMTH210
+
+4.6
+
+17
+
+REMARKS ON REPEATED EIGENVALUES
+
+An n × n matrix always has n eigenvalues, but some of them may be repeated. In that
+case, the matrix may have < n linearly independent2 eigenvectors. However, the matrix
+may still have the full complement of eigenvectors3 as does the matrix
+"
+#
+3 0
+A=
+,
+0 3
+since
+0 = det (A − λI) =
+
+3−λ
+0
+= (3 − λ)2 =⇒ λ = 3, 3
+0
+3−λ
+
+(i.e. one eigenvalue, 3, which is repeated).
+" # But the matrix
+" # A does have a pair of linearly
+1
+0
+independent eigenvectors, for example
+and
+.
+0
+1
+On the other hand, if we are solving a system of n ODEs and the n×n matrix of coefficients
+has repeated eigenvectors and has less than n linearly independent eigenvectors, then our
+method of solution will not work in its current form.
+Example 4.6.1
+"
+
+#
+0 1
+Find the eigenvalues and eigenvectors of A =
+.
+−1 2
+Solution.
+
+2
+
+We have already observed that if v is an eigenvector then kv is also, for any k ̸= 0, but the key thing
+
+is generating linearly independent eigenvectors.
+3
+There is a test to determine how may eigenvectors a matrix has, but this is for the future.
+
+18
+
+EMTH210
+
+♦
+As an aside, we can take a look at why this happens. Consider the ODE
+d2 y
+dy
+− 2 + y = 0.
+2
+dt
+dt
+
+(3)
+
+The auxiliary equation is m2 − 2m + 1 = 0 with repeated root m = 1. We learned how to
+deal with this, finding that the general solution is
+y = c1 et + c2 tet .
+
+(4)
+
+We now write this one second order ODE as two first order ODEs4 . First, we set
+y = y1
+
+and y2 =
+
+dy1
+,
+dt
+
+so that equation (3) implies that
+d2 y 1
+dy2
+dy1
+=
+=2
+− y1 = 2y2 − y1 .
+2
+dt
+dt
+dt
+So in matrix form our one second order ODE becomes the system of two ODEs
+" # "
+#" #
+0 1 y1
+d y1
+=
+.
+dt y2
+−1 2 y2
+We solved such systems by starting with
+" #
+y1
+y=
+= veλt ,
+y2
+which excludes the second part of (4) =⇒ the matrix must be an eigenvector short.
+Therefore this method doesn’t always work; it can fail with repeated eigenvalues.
+4
+
+This is how you would solve this second order ODE using the built-in ODE solvers of SciPy, for
+
+example.
+
+EMTH210
+
+4.7
+
+19
+
+PRINCIPAL AXES OF AN ELLIPSE
+
+A circle is inscribed on the face of a block of material. The block is then subject to
+compression and shear forces which deform the circle into an ellipse.
+By choosing the principal axes of the ellipse as new coordinate axes we can replace these
+forces with compressions only. In other words, we wish to find a new coordinate system
+in which the major and minor axes of the ellipse are aligned with the coordinate axes
+instead of at an angle to them. A picture might look like the following.
+v
+
+y
+u
+
+x
+
+Let us see what the theory would need. Suppose that our ellipse is given by
+4x2 + 2xy + 4y 2 = 30.
+The presence of the ‘2xy’ term immediately tells us that this ellipse is at angle to the
+(x, y)-axes. It is this “cross term” that we wish to eliminate by choosing new coordinates
+(u, v) with which to describe the ellipse. To do so, we first write the ellipse as a “quadratic
+form”:
+"
+#" #
+h
+i a b x
+Q = 4x2 + 2xy + 4y 2 = x y
+b c y
+for some a, b and c (note the symmetry of the two bs). Expanding the RHS we get
+
+So
+a=
+
+,
+
+2b =
+
+=⇒ b =
+
+,
+
+c=
+
+.
+
+20
+
+EMTH210
+
+Annotate the following for a more easily-remembered shortcut:
+"
+#" #
+h
+i 4 1 x
+Q = 4x2 + 2xy + 4y 2 = x y
+.
+1 4 y
+As we said above, we want to change to new variables u and v so that
+"
+#" #
+h
+i λ 0
+u
+1
+Q= u v
+0 λ2 v
+
+(5)
+
+=
+
+=
+because λ1 u2 +λ2 v 2 = 30 is an ellipse with the u and v coordinate axes as its principle axes
+(note the absence of any cross term). The next section outlines how to define (u, v) and
+λ1,2 in terms of the eigenvalues and eigenvectors of the matrix of the quadratic form, and
+to relate (u, v) to (x, y). This diagonalisation of matrices – so called because everything
+off the diagonal becomes zero – is important not only for describing strains as mentioned
+above, but also for a range of numerical techniques.
+
+4.8
+
+DIAGONALISING A MATRIX
+
+An n × n matrix A is called diagonalisable if and only if there is a non-singular matrix P
+and a diagonal matrix D such that
+P −1 AP = D.
+The following are all equivalent definitions of the diagonalisability of A:
+
+Aside: note that such a P exists if and only if A has n linearly independent eigenvectors.
+
+EMTH210
+
+21
+
+For example, for a 2 × 2 matrix A, AP = P D gives,
+"
+#
+h
+i h
+i λ 0
+1
+A v1 v2 = v1 v2
+,
+0 λ2
+where the column vector vi is the ith column of P and λi is the ith diagonal element of
+D. Multiplying out
+h
+i h
+i
+Av1 Av2 = λ1 v1 + 0 0 + λ2 v2 ,
+and since these two matrices are equal, their columns are equal, so Av1 = λ1 v1 and
+Av2 = λ2 v2 ; the λi , vi are the eigenvalue/vector pairs of A.
+To diagonalise the n × n matrix A:
+1. Find the eigenvalue/eigenvector pairs λi , vi .
+2. Form a matrix P whose columns are the eigenvectors.
+3. Form a diagonal matrix D whose diagonal elements are the eigenvalues
+in the same order in which the eigenvectors were placed in P .
+4. Then P −1 AP = D.
+Although it seems as if we don’t really use P , the matrix of eigenvectors, we will shortly
+see that P is essential for finding the principal axes of an ellipse (amongst other uses).
+Example 4.8.1
+"
+Diagonalise the matrix A =
+
+#
+
+4 1
+.
+1 4
+
+Solution.
+
+♦
+
+22
+
+EMTH210
+
+Example 4.8.2
+Return to the motivating example from the beginning of this section, and find the principle
+axes of its ellipse, 4x2 + 2xy + 4y 2 = 30.
+Solution.
+
+EMTH210
+
+23
+
+24
+
+EMTH210
+
+♦
+The new coordinate axes (u, v) can be sketched" on
+# the"old
+# (x, y)
+" axes
+# and their directions
+u
+1
+0
+are given by v1 and v2 (found by considering
+=
+and
+).
+v
+0
+1
+To find the principal axes of an ellipse:
+1. Write the equation for the ellipse in matrix form as on page 20.
+2. Work through the box on page 21 to diagonalise the matrix, choosing the
+eigenvector scaling that makes them unit vectors.
+3. Use the diagonal matrix in the quadratic form to find the equation of the
+ellipse in the new (principal axes) coordinate system (as above).
+4. Use P to find how the new coordinate system relates to the old (as above).
+5. Sketch the ellipse if required.
+See also the thoroughly-worked example coming up.
+
+EMTH210
+
+4.9
+
+25
+
+ORTHOGONAL MATRICES
+
+In the last example it was essential that the matrix P had the property that its transpose was equal to its inverse. Matrices with the property that P T = P −1 are called
+orthogonal. In this short section, we examine a little bit of the theory behind orthogonal
+matrices. From the definition, a simple test as to whether a given matrix is orthogonal
+is to check if you get the identity matrix when you multiply the matrix by its transpose:
+If P T P = I then P is orthogonal .
+Example 4.9.1
+"
+#
+4 3
+1
+Is the matrix P =
+orthogonal?
+5 −3 4
+Solution.
+
+♦
+
+Any orthogonal matrix P can be written in terms of its columns, each column being a
+h
+i
+column vector: P = x1 x2 x3 , so that P T P = I gives
+
+ 
+
+ 
+1 0 0
+xT1 h
+xT1 x1 xT1 x2 xT1 x3
+i
+
+ 
+
+ T
+x2  x1 x2 x3 = xT2 x1 xT2 x2 xT2 x3  = 0 1 0
+xT3
+0 0 1
+xT3 x1 xT3 x2 xT3 x3
+where xTi xj ≡ xi · xj , (i.e. the dot product).
+By inspection,
+x1 · x1 = x2 · x2 = x3 · x3 = 1.
+In other words, all the columns of P have
+xi · xj = 0,
+i.e. all the columns of P are
+
+. Also,
+i ̸= j,
+.
+
+26
+
+EMTH210
+So when diagonalising the matrix in an ellipse’s
+quadratic form we use
+h
+
+P = v̂1 v̂2 . . .
+
+v̂n
+
+i
+
+where v̂i is the normalised eigenvector vi /∥vi ∥.
+Example 4.9.2
+Show that for eigenvalues of a symmetric matrix A, different eigenvectors are always
+mutually perpendicular provided they have different eigenvalues.
+Solution.
+
+♦
+Note that if v1 and v2 share the same eigenvalue then the eigenvectors can be chosen to
+be perpendicular, but this is beyond the scope of this course.
+
+EMTH210
+
+27
+
+Let’s apply everything we have learned in a last example.
+Example 4.9.3
+Draw the following ellipse in xy-coordinates.
+Q = 6x2 + 4xy + 9y 2 = 20.
+Solution.
+
+28
+
+EMTH210
+
+EMTH210
+
+29
+
+♦
+
+
+
+

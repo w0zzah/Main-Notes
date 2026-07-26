@@ -1,0 +1,45 @@
+package seng201.tut2;
+
+import seng201.tut2.gui.ScreenNavigator;
+import seng201.tut2.models.Rocket;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class RocketManager {
+    private String name;
+    private List<Rocket> rocketList;
+    private final List<Rocket> defaultRockets = new ArrayList<>();
+    private final ScreenNavigator navigator;
+
+    public RocketManager(ScreenNavigator navigator) {
+        this.navigator = navigator;
+        defaultRockets.addAll(List.of(new Rocket("Space Shuttle"), new Rocket("Falcon 9"),
+                new Rocket("Falcon Heavy"), new Rocket("Ariane 5"), new Rocket("Saturn 5"),
+                new Rocket("Delta IV Heavy")));
+        navigator.launchSetupScreen(this);
+    }
+    // This is the bridge. it saves the users name and choices to the managers vars
+    // then tells the navigator to move to the next screen
+    public void onSetupComplete(String name, List<Rocket> rockets) {
+        this.name = name;
+        this.rocketList = rockets;
+        // This line then tells the navigator to switch the fxml file
+        navigator.launchMainScreen(this);
+    }
+    public String getName() {
+        return name;
+    }
+
+    public List<Rocket> getRocketList() {
+        return rocketList;
+    }
+    // The default list of rockets selected at the startup
+    public List<Rocket> getDefaultRockets() {
+        return defaultRockets;
+    }
+
+    public void onQuitRequested() {
+        System.exit(0);
+    }
+}

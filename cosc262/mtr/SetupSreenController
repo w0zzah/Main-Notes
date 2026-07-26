@@ -1,0 +1,140 @@
+
+package seng201.tut2.gui;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
+import seng201.tut2.RocketManager;
+import seng201.tut2.models.Rocket;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
+public class SetupScreenController extends ScreenController {
+    // These serve as the plugs for connecting our code the actual fxml file
+    @FXML private Button selectedRocket1Button;
+    @FXML private Button selectedRocket2Button;
+    @FXML private Button selectedRocket3Button;
+
+    @FXML private Button rocket1Button;
+    @FXML private Button rocket2Button;
+    @FXML private Button rocket3Button;
+    @FXML private Button rocket4Button;
+    @FXML private Button rocket5Button;
+    @FXML private Button rocket6Button;
+
+    @FXML private Label rocketStatsNameLabel;
+    @FXML private Label rocketStatsFuelLabel;
+    @FXML private Label rocketStatsCleanlinessLabel;
+
+    @FXML private Slider rocketSlider;
+    @FXML private TextField nameTextField;
+    /**
+     * The Setup ScreenController is used to handle all user inputs on the setup screen
+     * this means we can temporarily store this information here till we go next then parse it onto
+     * the next screen.
+     */
+    // --- State Variables ---
+    private int selectedRocketIndex = -1;
+    private final Rocket[] selectedRockets = new Rocket[3];
+
+    // --- Constructor ---
+    public SetupScreenController(RocketManager manager) {
+        super(manager);
+    }
+
+    // --- Initialization ---
+    @FXML
+    public void initialize() {
+        // runs on initialization
+        // Groups all the buttons together so we can apply logic to all of them at the same time
+        List<Button> selectedRocketButtons = List.of(selectedRocket1Button, selectedRocket2Button, selectedRocket3Button);
+        List<Button> rocketButtons = List.of(rocket1Button, rocket2Button, rocket3Button, rocket4Button, rocket5Button, rocket6Button);
+
+        // Setup action for the main rocket selection buttons. The arrow or -> is used as a lambda function. "When clicked, run this line of code..."
+        for (int i = 0; i < rocketButtons.size(); i++) {
+            int buttonIndex = i; // variables used within lambdas must be final
+            rocketButtons.get(i).setOnAction(event -> onRocketButtonClicked(rocketButtons, buttonIndex));
+        }
+
+        // Setup action for the blank selected rocket slots
+        for (int i = 0; i < selectedRocketButtons.size(); i++) {
+            int buttonIndex = i; // variables used within lambdas must be final
+            selectedRocketButtons.get(i).setOnAction(event ->
+                    onSelectedRocketButtonClicked(selectedRocketButtons, buttonIndex));
+        }
+
+        // Listen to slider changes to enable/disable slots
+        rocketSlider.valueProperty().addListener((observable, oldValue, newValue) ->
+                onRocketCountUpdated(newValue.intValue(), selectedRocketButtons));
+    }
+
+    // --- Helper Methods ---
+    private void onRocketButtonClicked(List<Button> rocketButtons, int rocketIndex) {
+        updateStats(getRocketManager().getDefaultRockets().get(rocketIndex));
+        selectedRocketIndex = rocketIndex;
+        rocketButtons.forEach(button -> {
+            if (button == rocketButtons.get(rocketIndex)) {
+                button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+            } else {
+                button.setStyle("");
+            }
+        });
+    }
+
+    private void updateStats(Rocket rocket) {
+        rocketStatsNameLabel.setText(rocket.getName());
+        rocketStatsFuelLabel.setText(rocket.getFuel());
+        rocketStatsCleanlinessLabel.setText(rocket.getCleanliness());
+    }
+
+    private void onSelectedRocketButtonClicked(List<Button> selectedRocketButtons, int rocketIndex) {
+        RocketManager rocketManager = getRocketManager();
+        if (selectedRocketIndex != -1) {
+            Rocket selectedRocket = rocketManager.getDefaultRockets().get(selectedRocketIndex);
+            // Only add the selected rocket to the array of selected rockets if it isn't already in the array.
+            if (Arrays.stream(selectedRockets).noneMatch(rocket -> rocket == selectedRocket)) {
+                selectedRocketButtons.get(rocketIndex).setText(selectedRocket.getName());
+                selectedRockets[rocketIndex] = selectedRocket;
+            }
+        }
+    }
+
+    private void onRocketCountUpdated(int rocketCount, List<Button> selectedRocketButtons) {
+        for (int i = 0; i < selectedRocketButtons.size(); i++) {
+            selectedRocketButtons.get(i).setDisable(i >= rocketCount);
+            if (i >= rocketCount) {
+                // Ensure any previous selection is removed
+                selectedRockets[i] = null;
+                selectedRocketButtons.get(i).setText(null);
+            }
+        }
+    }
+
+    // --- FXML Event Handlers ---
+    @FXML
+    private void onAcceptClicked() {
+        // Step One. Clean the list of rockets and remove any null slots
+        List<Rocket> rockets = Arrays.stream(selectedRockets).filter(Objects::nonNull).toList();
+        // Step Two: Set the name give to playerName
+        String playerName = nameTextField.getText();
+
+        // Step Three. Tell the manager we are done this trigger the RocketManager.onSetupComplete()
+        getRocketManager().onSetupComplete(playerName, rockets);
+    }
+
+
+
+    // --- ScreenController Overrides ---
+    @Override
+    protected String getFxmlFile() {
+        return "/fxml/setup_screen.fxml";
+    }
+
+    @Override
+    protected String getTitle() {
+        return "Rocket Manager Setup";
+    }
+}

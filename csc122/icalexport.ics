@@ -1,0 +1,416 @@
+BEGIN:VCALENDAR
+METHOD:PUBLISH
+PRODID:-//Moodle Pty Ltd//NONSGML Moodle Version 2024100705.05//EN
+VERSION:2.0
+BEGIN:VEVENT
+UID:29622319@learn.canterbury.ac.nz
+SUMMARY:Quiz 6 (due 5pm Friday 27 March) opens
+DESCRIPTION:This quiz covers content from week 5 as well as revision.\n\nEM
+	TH210 quizzes are partially mastery-based:\n\n	* If you get 90% OR HIGHER\,
+	 you get FULL CREDIT for the quiz (everything ≥ 90% counts the same).\n	* I
+	f you get between 40% AND 90%\, you get the mark you earned for the quiz.\n
+		* If you get LOWER THAN 40%\, you get NO CREDIT. In that case\, you should
+	 study what you struggled with\, e.g. with tutorial questions\, and try aga
+	in 😊.\n\nYour best 10 OUT OF 12 quizzes count.\n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260318T213044Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260320T040000Z
+DTEND:20260320T040000Z
+CATEGORIES:EMTH210-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29357209@learn.canterbury.ac.nz
+SUMMARY:Assignment 4 submission is due
+DESCRIPTION:
+CLASS:PUBLIC
+LAST-MODIFIED:20260313T004445Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260320T105900Z
+DTEND:20260320T105900Z
+CATEGORIES:MATH120-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29622318@learn.canterbury.ac.nz
+SUMMARY:Quiz 5 (due 5pm Friday 20 March) - Quiz 05 Extension closes
+DESCRIPTION:This quiz covers content from week 4 as well as revision.\n\nEM
+	TH210 quizzes are partially mastery-based:\n\n	* If you get 90% OR HIGHER\,
+	 you get FULL CREDIT for the quiz (everything ≥ 90% counts the same).\n	* I
+	f you get between 40% AND 90%\, you get the mark you earned for the quiz.\n
+		* If you get LOWER THAN 40%\, you get NO CREDIT. In that case\, you should
+	 study what you struggled with\, e.g. with tutorial questions\, and try aga
+	in 😊.\n\nYour best 10 OUT OF 12 quizzes count.\n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260309T213941Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260322T220000Z
+DTEND:20260322T220000Z
+CATEGORIES:EMTH210-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488677@learn.canterbury.ac.nz
+SUMMARY:Project Effort Registry Week 6 (23rd - 29th March) opens
+DESCRIPTION:How this works:\n\n	* A grade of 100% is required for the submi
+	ssion to be counted\n	* Any submitted answer will be marked as correct\n	* 
+	All questions that are required are marked as _REQUIRED_\n	* Although this 
+	quiz has a grade attached the grade does NOT impact your final grade. We on
+	ly expect you to COMPLETE the corresponding quiz each week.\n\nYou are NOT 
+	required to submit effort logs over the break. However\, we still recommend
+	 that you do so if you complete any work during this time.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203128Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260323T105900Z
+DTEND:20260323T105900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29491232@learn.canterbury.ac.nz
+SUMMARY:Quiz 6: Modular Arithmetic and Cryptography opens
+DESCRIPTION:
+CLASS:PUBLIC
+LAST-MODIFIED:20260313T004446Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260323T210000Z
+DTEND:20260323T210000Z
+CATEGORIES:MATH120-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:30172257@learn.canterbury.ac.nz
+SUMMARY:Planned system maintenance for AKO|LEARN will take place on Wednesd
+	ay 25 Mar 2026 at 10:00pm  for ~45 mins
+	
+DESCRIPTION:AKO|LEARN will be unavailable from Wednesday 25 Mar 2026 at 10:
+	00pm to Wednesday 25 Mar 2026 at 10:45pm for a planned system maintenance. 
+	We apologise for any inconvenience this outage may cause. Please do not att
+	empt to complete or submit any assignments\, quizzes\, workshops\, etc over
+	 this period.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260324T193925Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260325T090000Z
+DTEND:20260325T094500Z
+CATEGORIES:Site events
+END:VEVENT
+BEGIN:VEVENT
+UID:29488688@learn.canterbury.ac.nz
+SUMMARY:Project pair selection (Due date)
+DESCRIPTION:Please register your pairs here. You MUST have registered your 
+	pairs by FRIDAY 27TH MARCH 5PM.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T202654Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260327T040000Z
+DTEND:20260327T040000Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29622320@learn.canterbury.ac.nz
+SUMMARY:Quiz 6 (due 5pm Friday 27 March) closes
+DESCRIPTION:This quiz covers content from week 5 as well as revision.\n\nEM
+	TH210 quizzes are partially mastery-based:\n\n	* If you get 90% OR HIGHER\,
+	 you get FULL CREDIT for the quiz (everything ≥ 90% counts the same).\n	* I
+	f you get between 40% AND 90%\, you get the mark you earned for the quiz.\n
+		* If you get LOWER THAN 40%\, you get NO CREDIT. In that case\, you should
+	 study what you struggled with\, e.g. with tutorial questions\, and try aga
+	in 😊.\n\nYour best 10 OUT OF 12 quizzes count.\n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260318T213044Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260327T040000Z
+DTEND:20260327T040000Z
+CATEGORIES:EMTH210-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29357210@learn.canterbury.ac.nz
+SUMMARY:Assignment 5 submission is due
+DESCRIPTION:
+CLASS:PUBLIC
+LAST-MODIFIED:20260313T004445Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260327T105900Z
+DTEND:20260327T105900Z
+CATEGORIES:MATH120-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488679@learn.canterbury.ac.nz
+SUMMARY:Project Effort Registry Break Weeks (30th March - 19th April) opens
+DESCRIPTION:You are NOT required to submit effort logs over the break. Howe
+	ver\, we still recommend that you do so if you complete any work during thi
+	s time.\n\nHow this works:\n\n	* A grade of 100% is required for the submis
+	sion to be counted\n	* Any submitted answer will be marked as correct\n	* A
+	ll questions that are required are marked as _REQUIRED_\n	* Although this q
+	uiz has a grade attached the grade does NOT impact your final grade. We onl
+	y expect you to COMPLETE the corresponding quiz each week.\n	* You may answ
+	er this quiz multiple times for each different week of the break.\n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203151Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260330T105900Z
+DTEND:20260330T105900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488689@learn.canterbury.ac.nz
+SUMMARY:Project Effort Registry Week 6 (23rd - 29th March) closes
+DESCRIPTION:How this works:\n\n	* A grade of 100% is required for the submi
+	ssion to be counted\n	* Any submitted answer will be marked as correct\n	* 
+	All questions that are required are marked as _REQUIRED_\n	* Although this 
+	quiz has a grade attached the grade does NOT impact your final grade. We on
+	ly expect you to COMPLETE the corresponding quiz each week.\n\nYou are NOT 
+	required to submit effort logs over the break. However\, we still recommend
+	 that you do so if you complete any work during this time.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203128Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260331T105900Z
+DTEND:20260331T105900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488678@learn.canterbury.ac.nz
+SUMMARY:Project Effort Registry Week 7 (20th - 26th April) opens
+DESCRIPTION:How this works:\n\n	* A grade of 100% is required for the submi
+	ssion to be counted\n	* Any submitted answer will be marked as correct\n	* 
+	All questions that are required are marked as _REQUIRED_\n	* Although this 
+	quiz has a grade attached the grade does NOT impact your final grade. We on
+	ly expect you to COMPLETE the corresponding quiz each week.\n\nYou are NOT 
+	required to submit effort logs over the break. However\, we still recommend
+	 that you do so if you complete any work during this time.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203302Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260420T115900Z
+DTEND:20260420T115900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29491235@learn.canterbury.ac.nz
+SUMMARY:Quiz 7: Cryptography\, Sets and Relations opens
+DESCRIPTION:
+CLASS:PUBLIC
+LAST-MODIFIED:20260313T004446Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260420T220000Z
+DTEND:20260420T220000Z
+CATEGORIES:MATH120-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29675056@learn.canterbury.ac.nz
+SUMMARY:Quiz 6: Modular Arithmetic and Cryptography closes
+DESCRIPTION:
+CLASS:PUBLIC
+LAST-MODIFIED:20260313T004446Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260420T220000Z
+DTEND:20260420T220000Z
+CATEGORIES:MATH120-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488691@learn.canterbury.ac.nz
+SUMMARY:Project Effort Registry Break Weeks (30th March - 19th April) close
+	s
+	
+DESCRIPTION:You are NOT required to submit effort logs over the break. Howe
+	ver\, we still recommend that you do so if you complete any work during thi
+	s time.\n\nHow this works:\n\n	* A grade of 100% is required for the submis
+	sion to be counted\n	* Any submitted answer will be marked as correct\n	* A
+	ll questions that are required are marked as _REQUIRED_\n	* Although this q
+	uiz has a grade attached the grade does NOT impact your final grade. We onl
+	y expect you to COMPLETE the corresponding quiz each week.\n	* You may answ
+	er this quiz multiple times for each different week of the break.\n\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203151Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260421T115900Z
+DTEND:20260421T115900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29357211@learn.canterbury.ac.nz
+SUMMARY:Assignment 6 submission is due
+DESCRIPTION:
+CLASS:PUBLIC
+LAST-MODIFIED:20260313T004445Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260424T115900Z
+DTEND:20260424T115900Z
+CATEGORIES:MATH120-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488680@learn.canterbury.ac.nz
+SUMMARY:Project Effort Registry Week 8 (27th April - 3rd May) opens
+DESCRIPTION:How this works:\n\n	* A grade of 100% is required for the submi
+	ssion to be counted\n	* Any submitted answer will be marked as correct\n	* 
+	All questions that are required are marked as _REQUIRED_\n	* Although this 
+	quiz has a grade attached the grade does NOT impact your final grade. We on
+	ly expect you to COMPLETE the corresponding quiz each week.\n\nYou are NOT 
+	required to submit effort logs over the break. However\, we still recommend
+	 that you do so if you complete any work during this time.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203356Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260427T115900Z
+DTEND:20260427T115900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29675052@learn.canterbury.ac.nz
+SUMMARY:Quiz 7: Cryptography\, Sets and Relations closes
+DESCRIPTION:
+CLASS:PUBLIC
+LAST-MODIFIED:20260313T004446Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260427T220000Z
+DTEND:20260427T220000Z
+CATEGORIES:MATH120-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488690@learn.canterbury.ac.nz
+SUMMARY:Project Effort Registry Week 7 (20th - 26th April) closes
+DESCRIPTION:How this works:\n\n	* A grade of 100% is required for the submi
+	ssion to be counted\n	* Any submitted answer will be marked as correct\n	* 
+	All questions that are required are marked as _REQUIRED_\n	* Although this 
+	quiz has a grade attached the grade does NOT impact your final grade. We on
+	ly expect you to COMPLETE the corresponding quiz each week.\n\nYou are NOT 
+	required to submit effort logs over the break. However\, we still recommend
+	 that you do so if you complete any work during this time.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203302Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260428T115900Z
+DTEND:20260428T115900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488681@learn.canterbury.ac.nz
+SUMMARY:Project Effort Registry Week 9 (4th - 10th May) opens
+DESCRIPTION:How this works:\n\n	* A grade of 100% is required for the submi
+	ssion to be counted\n	* Any submitted answer will be marked as correct\n	* 
+	All questions that are required are marked as _REQUIRED_\n	* Although this 
+	quiz has a grade attached the grade does NOT impact your final grade. We on
+	ly expect you to COMPLETE the corresponding quiz each week.\n\nYou are NOT 
+	required to submit effort logs over the break. However\, we still recommend
+	 that you do so if you complete any work during this time.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203418Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260504T115900Z
+DTEND:20260504T115900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488692@learn.canterbury.ac.nz
+SUMMARY:Project Effort Registry Week 8 (27th April - 3rd May) closes
+DESCRIPTION:How this works:\n\n	* A grade of 100% is required for the submi
+	ssion to be counted\n	* Any submitted answer will be marked as correct\n	* 
+	All questions that are required are marked as _REQUIRED_\n	* Although this 
+	quiz has a grade attached the grade does NOT impact your final grade. We on
+	ly expect you to COMPLETE the corresponding quiz each week.\n\nYou are NOT 
+	required to submit effort logs over the break. However\, we still recommend
+	 that you do so if you complete any work during this time.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203356Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260505T115900Z
+DTEND:20260505T115900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488682@learn.canterbury.ac.nz
+SUMMARY:Project Effort Registry Week 10 (11th - 17th May) opens
+DESCRIPTION:How this works:\n\n	* A grade of 100% is required for the submi
+	ssion to be counted\n	* Any submitted answer will be marked as correct\n	* 
+	All questions that are required are marked as _REQUIRED_\n	* Although this 
+	quiz has a grade attached the grade does NOT impact your final grade. We on
+	ly expect you to COMPLETE the corresponding quiz each week.\n\nYou are NOT 
+	required to submit effort logs over the break. However\, we still recommend
+	 that you do so if you complete any work during this time.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203439Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260511T115900Z
+DTEND:20260511T115900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488693@learn.canterbury.ac.nz
+SUMMARY:Project Effort Registry Week 9 (4th - 10th May) closes
+DESCRIPTION:How this works:\n\n	* A grade of 100% is required for the submi
+	ssion to be counted\n	* Any submitted answer will be marked as correct\n	* 
+	All questions that are required are marked as _REQUIRED_\n	* Although this 
+	quiz has a grade attached the grade does NOT impact your final grade. We on
+	ly expect you to COMPLETE the corresponding quiz each week.\n\nYou are NOT 
+	required to submit effort logs over the break. However\, we still recommend
+	 that you do so if you complete any work during this time.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203418Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260512T115900Z
+DTEND:20260512T115900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488683@learn.canterbury.ac.nz
+SUMMARY:Project Effort Registry Week 11 (19th - 22nd May) opens
+DESCRIPTION:How this works:\n\n	* A grade of 100% is required for the submi
+	ssion to be counted\n	* Any submitted answer will be marked as correct\n	* 
+	All questions that are required are marked as _REQUIRED_\n	* Although this 
+	quiz has a grade attached the grade does NOT impact your final grade. We on
+	ly expect you to COMPLETE the corresponding quiz each week.\n\nYou are NOT 
+	required to submit effort logs over the break. However\, we still recommend
+	 that you do so if you complete any work during this time.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203721Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260518T115900Z
+DTEND:20260518T115900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488694@learn.canterbury.ac.nz
+SUMMARY:Project Effort Registry Week 10 (11th - 17th May) closes
+DESCRIPTION:How this works:\n\n	* A grade of 100% is required for the submi
+	ssion to be counted\n	* Any submitted answer will be marked as correct\n	* 
+	All questions that are required are marked as _REQUIRED_\n	* Although this 
+	quiz has a grade attached the grade does NOT impact your final grade. We on
+	ly expect you to COMPLETE the corresponding quiz each week.\n\nYou are NOT 
+	required to submit effort logs over the break. However\, we still recommend
+	 that you do so if you complete any work during this time.\n
+	
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203439Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260519T115900Z
+DTEND:20260519T115900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+BEGIN:VEVENT
+UID:29488685@learn.canterbury.ac.nz
+SUMMARY:Project submission is due
+DESCRIPTION:
+CLASS:PUBLIC
+LAST-MODIFIED:20260322T203932Z
+DTSTAMP:20260325T022033Z
+DTSTART:20260522T115900Z
+DTEND:20260522T115900Z
+CATEGORIES:SENG201-26S1
+END:VEVENT
+END:VCALENDAR

@@ -27,6 +27,5 @@ For each **course** a **student** has taken we need to know the final **grade**.
 - Student's have the attribute name, that has two branching attributes first and last.
 
 
-#### Airplanes
-
+#### Air planes
 - 

@@ -18,5 +18,7 @@
 	- **Performance:** Making sure the database can efficently run queries.
 	- **Storage:**  Define the total physical space a DB can take up
 
-### DB Intension:
-- The intension of DB refers to the schema, primarily focusing on the definitions of tables, data types, and constraints. This initial structural blueprint acts as a rule-set, that if modified changes the fundamental way we traverse a database.,
+### DB Intension vs Extension:
+- The intension of DB refers to the schema, primarily focusing on the definitions of tables, data types, and constraints. This initial structural blueprint acts as a rule-set, that if modified changes the fundamental way we traverse a database.
+- The **Externsion** of a DB refers to the actual data stored in the database
+ 

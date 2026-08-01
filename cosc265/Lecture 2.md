@@ -37,7 +37,7 @@ initial database state is a snapshot
 
 ## Components of data models
 
-structural, Integrity, Oeprational
+structural, Integrity, Operational
 
 ## Categories 
 

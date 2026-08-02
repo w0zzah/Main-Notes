@@ -56,3 +56,32 @@ for (intial; condition; increment) {
 }
 ```
 
+### Stream's
+- For pulling information from a collection like a list or a library. [docs](https://levelup.gitconnected.com/java-streams-everything-you-need-to-know-825404df4656)
+```Java
+public List<Type> func(List<Type> vals, int filterVar) {  
+    return points.stream()
+	    // Remove any vals that return false
+	    .filter(val -> (val.getVar() <= filterVar)
+	    // return the vals as a list
+	    .toList(); 
+  
+}
+```
+
+### Predicate's
+- Bool check to pass thru streams
+[docs](https://howtodoinjava.com/java8/how-to-use-predicate-in-java-8/)
+```Java
+public List<Type> func(List<Type> vals, Predicate<Point> predicate) {  
+    return points.stream()
+	    // Remove any vals that return false
+	    .filter(predicate)
+	    // return the vals as a list
+	    .toList(); 
+}
+```
+
+*Can use streams a replacement for loops using maps and predicates*
+
+### MAPS <- Goated

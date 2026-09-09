@@ -1,0 +1,1 @@
+tagSearchIndex = [{"l":"FUNCTIONS :","h":"class seng201.nunbutblood.controllers.CrusadeController","k":"16","u":"seng201/nunbutblood/controllers/CrusadeController.html#functions--heading"}];updateSearchResults();

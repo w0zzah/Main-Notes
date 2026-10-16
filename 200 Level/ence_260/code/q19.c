@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+
+void printPrimesInRange(uint32_t n1, uint32_t n2);
+
+
+int main (void) {
+	printPrimesInRange(2, 40);
+}
+
+void  printPrimesInRange(uint32_t n1,uint32_t n2)
+{
+	for (uint32_t i = n1; i <= n2; i++) {
+
+		bool is_prime = true;
+		for (uint32_t j = 2; j <= (i-1); j++) {
+			if (i % j == 0) {
+				is_prime = false;
+			}
+		}
+		if (is_prime) {
+			printf("%d\n", i);
+		}
+	}
+}

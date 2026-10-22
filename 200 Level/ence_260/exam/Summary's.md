@@ -70,3 +70,6 @@ There are only 3 different types of instructions
 
 
 ![[Pasted image 20261020193339.png]]
+
+
+#### Assembly

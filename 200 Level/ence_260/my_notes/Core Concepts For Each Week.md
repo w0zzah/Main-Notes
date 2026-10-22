@@ -63,3 +63,21 @@ Retrieves an instruction from the program memory
 |                         breq k                         |   -64 <= k <= 63    | Is result of CP, CPI, SUB, or SUBI = 0? |
 |                 **Control Registers**                  |     **Opcode**      |                **Flags**                |
 | PC <- PC + 1 (if Z = 0)<br>PC <- PC + k + 1 (if Z = 1) | 1111 00kk kkkk k001 |                  None                   |
+
+#### Program counter:
+- The programe (PC) is a very special pointer which cocntains the location in memory of the next instruction to be read.
+- It is manipulated with branching brXX instructions, otherwise it is typically incremented by one every instruction
+
+```s
+//load the value of index from memory
+ldd r24, Y+1
+ldd t25, Y+2
+// Add 0x01 to r25:r24
+adiw r24, 0x01
+
+// (then stored to memory)
+
+// test for index >= 4
+sbiw r24, 0x0  // subtract 0x04 from r25:r24
+brlt .-56 // go back 56 instructions if result was negative
+```
